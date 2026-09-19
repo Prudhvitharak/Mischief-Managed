@@ -34,14 +34,49 @@ body{
 
 
     <div id="viewer"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<img
-    src="./assets/wax-seal.jpg"
-    class="seal"
-    onclick="openBook()"
-    alt="Open"
-/>
+<title>Mischief Managed</title>
 
+<link rel="stylesheet" href="style.css">
+
+<script type="importmap">
+{
+  "imports": {
+    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
+    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="cover">
+
+    <!-- 3D Model -->
+    <div id="viewer"></div>
+
+    <!-- Wax Seal Button -->
+    <img
+        src="./assets/wax-seal.jpg"
+        class="seal"
+        alt="Open"
+        onclick="openBook()"
+    >
+
+</div>
+
+<script>
+function openBook(){
+    window.location.href = "./chapters/chapter1.html";
+}
+</script>
 
 <script type="module" src="./script.js"></script>
 
