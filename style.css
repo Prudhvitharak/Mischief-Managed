@@ -4,52 +4,96 @@
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     width:100%;
     height:100%;
-    overflow:hidden;
 }
 
 body{
+    overflow:hidden;
+
     background:url("./assets/parchment-bg.jpg");
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
+
+    font-family:Georgia, serif;
 }
 
-/* Model position */
-#viewer{
+.poster{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+.title{
     position:absolute;
 
-    width:450px;
-    height:550px;
+    top:8%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+    color:#3b2416;
+}
+
+.title h1{
+    font-size:clamp(40px,5vw,80px);
+    line-height:0.9;
+}
+
+.title p{
+    margin-top:15px;
+    letter-spacing:4px;
+}
+
+/* Model Area */
+#viewer{
+
+    position:absolute;
+
+    width:min(80vw,450px);
+    height:min(60vh,550px);
 
     left:50%;
     top:52%;
 
     transform:translate(-50%,-50%);
-
-    z-index:10;
 }
 
-/* Wax seal */
+/* Wax Seal */
 .seal{
+
     position:absolute;
 
     width:140px;
 
     left:50%;
-    bottom:40px;
+    bottom:90px;
 
     transform:translateX(-50%);
 
     cursor:pointer;
-
-    z-index:20;
 
     transition:.3s;
 }
 
 .seal:hover{
     transform:translateX(-50%) scale(1.08);
+}
+
+.tap-text{
+
+    position:absolute;
+
+    left:50%;
+    bottom:35px;
+
+    transform:translateX(-50%);
+
+    font-size:14px;
+    letter-spacing:3px;
+    color:#5b4331;
 }
