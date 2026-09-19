@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5e6c8;
+    color: #2c1b12;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.cover {
+    text-align: center;
+    max-width: 700px;
+    padding: 40px;
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 50px;
+}
+
+.seal {
+    width: 140px;
+    height: 140px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #b22222,
+        #7a0000
+    );
+
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(0,0,0,0.25),
+        inset 0 0 20px rgba(255,255,255,0.2);
+
+    transition: 0.3s ease;
+}
+
+.seal:hover {
+    transform: scale(1.08);
+}
+
+.corner {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    border-color: rgba(44,27,18,0.2);
+}
+
+.top-left {
+    top: 20px;
+    left: 20px;
+
+    border-top: 3px solid;
+    border-left: 3px solid;
+}
+
+.top-right {
+    top: 20px;
+    right: 20px;
+
+    border-top: 3px solid;
+    border-right: 3px solid;
+}
+
+.bottom-left {
+    bottom: 20px;
+    left: 20px;
+
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+}
+
+.bottom-right {
+    bottom: 20px;
+    right: 20px;
+
+    border-bottom: 3px solid;
+    border-right: 3px solid;
+}
+
+@media (max-width: 768px) {
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .seal {
+        width: 120px;
+        height: 120px;
+    }
+}
