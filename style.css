@@ -6,29 +6,22 @@
 
 html,
 body{
-
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#000;
+    background:black;
 }
 
 .poster{
-
     position:relative;
-
     width:100vw;
     height:100vh;
-
-    overflow:hidden;
 }
 
-/* FULL POSTER */
+/* Full poster */
 
 .background{
-
     position:absolute;
-
     inset:0;
 
     width:100%;
@@ -39,27 +32,27 @@ body{
     z-index:1;
 }
 
-/* 3D MODEL */
+/* 3D model area */
 
 #viewer{
-
     position:absolute;
 
     left:50%;
     top:48%;
 
-    width:38vw;
-    height:32vh;
+    width:280px;
+    height:340px;
 
     transform:translate(-50%,-50%);
 
     z-index:10;
+
+    pointer-events:none;
 }
 
-/* INVISIBLE SEAL BUTTON */
+/* Invisible seal click area */
 
-.seal-hitbox{
-
+.seal-button{
     position:absolute;
 
     left:50%;
