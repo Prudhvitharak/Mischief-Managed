@@ -112,9 +112,9 @@ loader.load(
         model = gltf.scene;
 
         model.scale.set(
-            1.4,
-            1.4,
-            1.4
+            1,
+            1,
+            1
         );
 
         model.position.set(
