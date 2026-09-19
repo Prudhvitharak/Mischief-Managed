@@ -124,7 +124,7 @@ loader.load(
 
         model.position.set(
             0,
-            -0.5,
+            0,
             0
         );
 
