@@ -80,8 +80,8 @@ body{
 
     #viewer{
 
-        width:45vw;
-        height:32vh;
+        width:100vw;
+        height:100vh;
 
         top:50%;
     }
