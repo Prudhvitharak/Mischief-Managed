@@ -1,19 +1,30 @@
-function showPassword(){
+// SHOW PASSWORD PAGE
 
-    document.getElementById("cover").classList.add("hidden");
+function showPassword() {
+
+    document
+        .getElementById("cover")
+        .classList.add("hidden");
 
     document
         .getElementById("passwordPage")
         .classList.remove("hidden");
 }
 
-function checkPassword(){
+
+
+// CHECK PASSWORD
+
+function checkPassword() {
 
     const password =
-        document.getElementById("passwordInput")
-        .value;
+        document
+        .getElementById("passwordInput")
+        .value
+        .trim()
+        .toLowerCase();
 
-    if(password.toLowerCase() === "hogwarts"){
+    if (password === "hogwarts") {
 
         document
             .getElementById("passwordPage")
@@ -22,21 +33,32 @@ function checkPassword(){
         document
             .getElementById("questionPage")
             .classList.remove("hidden");
-    }
 
-    else{
+    } else {
 
-        alert("The manuscript remains sealed.");
+        alert(
+            "The manuscript remains sealed."
+        );
     }
 }
 
-function checkAnswer(){
+
+
+// CHECK ANSWER
+
+function checkAnswer() {
 
     const answer =
-        document.getElementById("answerInput")
-        .value;
+        document
+        .getElementById("answerInput")
+        .value
+        .trim()
+        .toLowerCase();
 
-    if(answer.toLowerCase() === "hawty cafe"){
+    if (
+        answer === "hawty cafe" ||
+        answer === "hawty"
+    ) {
 
         document
             .getElementById("questionPage")
@@ -45,10 +67,11 @@ function checkAnswer(){
         document
             .getElementById("chapterPage")
             .classList.remove("hidden");
-    }
 
-    else{
+    } else {
 
-        alert("The map refuses to reveal its secrets.");
+        alert(
+            "The map refuses to reveal its secrets."
+        );
     }
 }
