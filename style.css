@@ -15,19 +15,19 @@ body{
 /* MOBILE POSTER */
 
 .poster{
-
     position:relative;
 
     width:100vw;
     height:100vh;
 
-    background-image:url("./assets/figurine.png");
-
-    background-position:center center;
+    background-image:url("./assets/Background.png");
     background-repeat:no-repeat;
-    background-size:cover;
+    background-position:center center;
 
-    overflow:hidden;
+    /* CHANGE THIS */
+    background-size:contain;
+
+    background-color:#d9c1a0;
 }
 
 /* 3D MODEL POSITION */
