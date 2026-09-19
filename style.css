@@ -1,65 +1,85 @@
+html,
 body{
 
 margin:0;
+padding:0;
 
-height:100vh;
+width:100%;
+height:100%;
 
 overflow:hidden;
+}
 
-background-image:url("assets/parchment-bg.jpg");
+.cover{
+
+position:relative;
+
+width:100vw;
+height:100vh;
+
+background-image:url("assets/cover.jpg");
+
 background-size:cover;
 background-position:center;
 
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
+background-repeat:no-repeat;
 }
 
-.watch{
+.figurine{
 
-width:90px;
+position:absolute;
 
-margin-top:20px;
+left:50%;
+top:45%;
+
+transform:translate(-50%,-50%);
+
+width:35vw;
+max-width:180px;
+
+animation:float 4s ease-in-out infinite;
 }
 
-h1{
+@keyframes float{
 
-font-size:42px;
-
-margin-top:10px;
-
-color:#2b1b11;
-
-letter-spacing:4px;
-
-font-family:Georgia,serif;
+0%{
+transform:translate(-50%,-50%);
 }
 
-.character{
+50%{
+transform:translate(-50%,-55%);
+}
 
-width:320px;
-
-height:420px;
-
-margin-top:10px;
+100%{
+transform:translate(-50%,-50%);
+}
 }
 
 .seal{
 
-width:130px;
+position:absolute;
 
-margin-top:auto;
+left:50%;
+bottom:12%;
 
-margin-bottom:40px;
+transform:translateX(-50%);
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+
+border:none;
+
+background:#8b0000;
+
+color:white;
+
+font-size:20px;
+
+font-weight:bold;
+
+box-shadow:0 0 25px rgba(139,0,0,0.5);
 
 cursor:pointer;
-
-transition:0.3s;
-}
-
-.seal:hover{
-
-transform:scale(1.1);
 }
