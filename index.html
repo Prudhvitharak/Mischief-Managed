@@ -1,19 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Mischief Managed</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mischief Managed</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background:#f5e6c8;font-family:Georgia;text-align:center;padding-top:100px;">
+<body>
 
-<h1>MISCHIEF MANAGED</h1>
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
 
-<p>A hidden manuscript of memories</p>
+    <div class="cover">
 
-<button onclick="alert('Version 1 is alive!')">
-I Solemnly Swear That I Am Up To No Good
-</button>
+        <h1 class="title">MISCHIEF MANAGED</h1>
+
+        <p class="subtitle">
+            A Hidden Manuscript of Memories
+        </p>
+
+        <div class="seal" onclick="openBook()">
+            OPEN
+        </div>
+
+    </div>
+
+    <script>
+        function openBook() {
+
+            const password = prompt(
+                "This manuscript is protected.\n\nEnter the password:"
+            );
+
+            if (password === "hogwarts") {
+
+                alert("Welcome, Keeper of Memories.");
+
+            } else {
+
+                alert("The manuscript remains sealed.");
+
+            }
+        }
+    </script>
 
 </body>
+
 </html>
