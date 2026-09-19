@@ -1,33 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<title>Mischief Managed</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script type="importmap">
+{
+  "imports": {
+    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
+    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+</head>
 <body>
 
 <div class="poster">
 
-    <div class="title">
-        <h1>
-            MISCHIEF<br>
-            MANAGED
-        </h1>
-
-        <p>
-            A HIDDEN MANUSCRIPT<br>
-            OF MEMORIES
-        </p>
-    </div>
-
+    <!-- 3D model -->
     <div id="viewer"></div>
 
+    <!-- Wax seal button -->
     <img
         src="./assets/wax-seal.jpg"
         class="seal"
+        alt="Open"
         onclick="openBook()"
     >
 
-    <div class="instruction">
-        TAP THE SEAL TO BEGIN
-    </div>
-
 </div>
+
+<script>
+function openBook() {
+    window.location.href = "./chapters/chapter1.html";
+}
+</script>
 
 <script type="module" src="./script.js"></script>
 
 </body>
+</html>
