@@ -2,179 +2,42 @@
 <html lang="en">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>Mischief Managed</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Mischief Managed</title>
-
-    <link rel="stylesheet"
-          href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- COVER PAGE -->
+<div class="sparkles"></div>
 
-    <div id="cover" class="page">
+<div class="container">
 
-        <img src="images/figurine.png"
-             class="figurine"
-             alt="Magical Figurine">
+    <img src="images/file_00000000286481f5be4545e25487e406.png"
+         alt="Mischief Managed"
+         class="cover-image">
 
-        <h1 class="title">
-            MISCHIEF MANAGED
-        </h1>
+    <h1>MISCHIEF MANAGED</h1>
 
-        <p class="subtitle">
+    <p class="subtitle">
+        The story of how two paths crossed and became one adventure.
+    </p>
 
-            The story of how two paths crossed
-            and became one adventure.
+    <p class="quote">
+        "I Solemnly Swear That I Am Up To No Good"
+    </p>
 
-        </p>
+    <button class="open-btn" onclick="openBook()">
+        OPEN
+    </button>
 
-        <div class="quote">
+</div>
 
-            "I Solemnly Swear That I Am Up To No Good"
-
-        </div>
-
-        <div class="seal"
-             onclick="showPassword()">
-
-            OPEN
-
-        </div>
-
-    </div>
-
-
-
-    <!-- PASSWORD PAGE -->
-
-    <div id="passwordPage"
-         class="page hidden">
-
-        <h2>
-
-            The manuscript recognizes only
-            its rightful reader.
-
-        </h2>
-
-        <p>
-
-            Speak the secret.
-
-        </p>
-
-        <input
-            type="password"
-            id="passwordInput"
-            placeholder="Password">
-
-        <br>
-
-        <button onclick="checkPassword()">
-
-            Reveal Manuscript
-
-        </button>
-
-    </div>
-
-
-
-    <!-- QUESTION PAGE -->
-
-    <div id="questionPage"
-         class="page hidden">
-
-        <h2>
-
-            Question I
-
-        </h2>
-
-        <p>
-
-            Where did we first meet?
-
-        </p>
-
-        <input
-            type="text"
-            id="answerInput"
-            placeholder="Your Answer">
-
-        <br>
-
-        <button onclick="checkAnswer()">
-
-            Unlock Memory
-
-        </button>
-
-    </div>
-
-
-
-    <!-- CHAPTER PAGE -->
-
-    <div id="chapterPage"
-         class="page hidden">
-
-        <div class="chapter-card">
-
-            <h1>
-
-                CHAPTER I
-
-            </h1>
-
-            <h2>
-
-                The Beginning
-
-            </h2>
-
-            <img
-                src="chapters/chapter1.jpg"
-                class="photo"
-                alt="Memory Photo">
-
-            <p>
-
-                This is where your first memory
-                will be written.
-
-                Replace this text with your story,
-                add photographs, and make this
-                chapter uniquely yours.
-
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-
-        Mischief Managed ✨
-
-    </div>
-
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
