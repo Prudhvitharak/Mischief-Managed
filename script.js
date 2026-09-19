@@ -132,52 +132,32 @@ loader.setDRACOLoader(
 let model;
 
 loader.load(
-
     "./assets/Model.glb",
 
     (gltf)=>{
 
-        model =
-        gltf.scene;
+        model = gltf.scene;
 
         scene.add(model);
 
-        const box =
-        new THREE.Box3()
-        .setFromObject(model);
-
-        const center =
-        box.getCenter(
-            new THREE.Vector3()
-        );
-
-        model.position.sub(
-            center
-        );
-
         model.scale.set(
-            1.0,
-            1.0,
-            1.0
+            1.3,
+            1.3,
+            1.3
         );
 
         model.position.set(
             0,
-            -0.2,
+            -0.3,
             0
         );
 
-        controls.target.set(
-            0,
-            0.4,
-            0
-        );
+        console.log("Loaded");
     },
 
     undefined,
 
     (error)=>{
-
         console.error(error);
     }
 );
