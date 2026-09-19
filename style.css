@@ -65,9 +65,9 @@ body{
 
     border-radius:50%;
 
-    z-index:20;
+    background:red;
 
-    cursor:pointer;
+    opacity:0.5;
 
-    background:transparent;
+    z-index:9999;
 }
