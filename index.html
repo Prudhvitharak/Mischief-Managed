@@ -6,7 +6,18 @@
 
 <title>Mischief Managed</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:transparent;
+}
+
+#viewer{
+    position:absolute;
+    inset:0;
+}
+</style>
 
 <script type="importmap">
 {
@@ -20,29 +31,9 @@
 
 <body>
 
-<div class="cover">
+<div id="viewer"></div>
 
-    <div class="cover">
-
-    <div id="viewer"></div>
-
-    <img
-      src="assets/wax-seal.jpg"
-      class="seal"
-      onclick="openBook()"
-    >
-
-</div>
-
-    <div id="viewer"></div>
-
-    <button class="seal" onclick="openBook()">
-        OPEN
-    </button>
-
-</div>
-
-<script type="module" src="script.js"></script>
+<script type="module" src="./script.js"></script>
 
 </body>
 </html>
