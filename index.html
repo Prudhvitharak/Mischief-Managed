@@ -2,38 +2,74 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Mischief Managed</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
 
-    <!-- COVER -->
+    <!-- COVER PAGE -->
 
     <div id="cover" class="page">
+
+        <img src="images/figurine.png"
+             class="figurine"
+             alt="Magical Figurine">
 
         <h1 class="title">
             MISCHIEF MANAGED
         </h1>
 
         <p class="subtitle">
-            A Hidden Manuscript of Memories
+
+            The story of how two paths crossed
+            and became one adventure.
+
         </p>
 
-        <div class="seal" onclick="showPassword()">
+        <div class="quote">
+
+            "I Solemnly Swear That I Am Up To No Good"
+
+        </div>
+
+        <div class="seal"
+             onclick="showPassword()">
+
             OPEN
+
         </div>
 
     </div>
 
-    <!-- PASSWORD -->
 
-    <div id="passwordPage" class="page hidden">
 
-        <h2>Enter Password</h2>
+    <!-- PASSWORD PAGE -->
+
+    <div id="passwordPage"
+         class="page hidden">
+
+        <h2>
+
+            The manuscript recognizes only
+            its rightful reader.
+
+        </h2>
+
+        <p>
+
+            Speak the secret.
+
+        </p>
 
         <input
             type="password"
@@ -43,18 +79,31 @@
         <br>
 
         <button onclick="checkPassword()">
+
             Reveal Manuscript
+
         </button>
 
     </div>
 
-    <!-- QUESTION -->
 
-    <div id="questionPage" class="page hidden">
 
-        <h2>Question I</h2>
+    <!-- QUESTION PAGE -->
 
-        <p>Where did we first meet?</p>
+    <div id="questionPage"
+         class="page hidden">
+
+        <h2>
+
+            Question I
+
+        </h2>
+
+        <p>
+
+            Where did we first meet?
+
+        </p>
 
         <input
             type="text"
@@ -64,30 +113,65 @@
         <br>
 
         <button onclick="checkAnswer()">
+
             Unlock Memory
+
         </button>
 
     </div>
 
-    <!-- CHAPTER -->
 
-    <div id="chapterPage" class="page hidden">
 
-        <h1>CHAPTER I</h1>
+    <!-- CHAPTER PAGE -->
 
-        <h2>The Beginning</h2>
+    <div id="chapterPage"
+         class="page hidden">
 
-        <img
-            src="https://picsum.photos/600/300"
-            class="photo">
+        <div class="chapter-card">
 
-        <p>
-            This is where your memory will go.
-            Later you can replace this text with
-            your actual story and photos.
-        </p>
+            <h1>
+
+                CHAPTER I
+
+            </h1>
+
+            <h2>
+
+                The Beginning
+
+            </h2>
+
+            <img
+                src="chapters/chapter1.jpg"
+                class="photo"
+                alt="Memory Photo">
+
+            <p>
+
+                This is where your first memory
+                will be written.
+
+                Replace this text with your story,
+                add photographs, and make this
+                chapter uniquely yours.
+
+            </p>
+
+        </div>
 
     </div>
+
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        Mischief Managed ✨
+
+    </div>
+
+
 
     <script src="script.js"></script>
 
