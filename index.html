@@ -11,43 +11,85 @@
 
 <body>
 
-    <div class="corner top-left"></div>
-    <div class="corner top-right"></div>
-    <div class="corner bottom-left"></div>
-    <div class="corner bottom-right"></div>
+    <!-- COVER -->
 
-    <div class="cover">
+    <div id="cover" class="page">
 
-        <h1 class="title">MISCHIEF MANAGED</h1>
+        <h1 class="title">
+            MISCHIEF MANAGED
+        </h1>
 
         <p class="subtitle">
             A Hidden Manuscript of Memories
         </p>
 
-        <div class="seal" onclick="openBook()">
+        <div class="seal" onclick="showPassword()">
             OPEN
         </div>
 
     </div>
 
-    <script>
-        function openBook() {
+    <!-- PASSWORD -->
 
-            const password = prompt(
-                "This manuscript is protected.\n\nEnter the password:"
-            );
+    <div id="passwordPage" class="page hidden">
 
-            if (password === "hogwarts") {
+        <h2>Enter Password</h2>
 
-                alert("Welcome, Keeper of Memories.");
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Password">
 
-            } else {
+        <br>
 
-                alert("The manuscript remains sealed.");
+        <button onclick="checkPassword()">
+            Reveal Manuscript
+        </button>
 
-            }
-        }
-    </script>
+    </div>
+
+    <!-- QUESTION -->
+
+    <div id="questionPage" class="page hidden">
+
+        <h2>Question I</h2>
+
+        <p>Where did we first meet?</p>
+
+        <input
+            type="text"
+            id="answerInput"
+            placeholder="Your Answer">
+
+        <br>
+
+        <button onclick="checkAnswer()">
+            Unlock Memory
+        </button>
+
+    </div>
+
+    <!-- CHAPTER -->
+
+    <div id="chapterPage" class="page hidden">
+
+        <h1>CHAPTER I</h1>
+
+        <h2>The Beginning</h2>
+
+        <img
+            src="https://picsum.photos/600/300"
+            class="photo">
+
+        <p>
+            This is where your memory will go.
+            Later you can replace this text with
+            your actual story and photos.
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 
