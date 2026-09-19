@@ -59,23 +59,8 @@ body{
 
 /* SEAL */
 
-.seal{
-
-    position:absolute;
-
-    left:50%;
-    top:79%;
-
-    width:120px;
-
-    transform:
-    translateX(-50%);
-
-    z-index:20;
-
-    cursor:pointer;
-
-    transition:.3s;
+.seal-hitbox{
+    background:rgba(255,0,0,0.3);
 }
 
 .seal:hover{
