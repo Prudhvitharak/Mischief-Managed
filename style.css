@@ -1,99 +1,112 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 html,
 body{
+    margin:0;
     width:100%;
     height:100%;
+    overflow:hidden;
 }
 
 body{
-    overflow:hidden;
 
-    background:url("./assets/parchment-bg.jpg");
+    background-image:
+    url("./assets/parchment-bg.jpg");
+
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
 
     font-family:Georgia, serif;
 }
 
 .poster{
+    position:relative;
     width:100%;
     height:100vh;
-    position:relative;
 }
 
 .title{
+
     position:absolute;
 
-    top:8%;
+    top:6%;
     left:50%;
 
     transform:translateX(-50%);
 
     text-align:center;
-    color:#3b2416;
+
+    color:#3a2416;
+
+    z-index:20;
 }
 
 .title h1{
-    font-size:clamp(40px,5vw,80px);
-    line-height:0.9;
+
+    margin:0;
+
+    font-size:clamp(
+        50px,
+        6vw,
+        100px
+    );
+
+    line-height:.9;
 }
 
 .title p{
-    margin-top:15px;
-    letter-spacing:4px;
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    letter-spacing:3px;
 }
 
-/* Model Area */
 #viewer{
 
     position:absolute;
 
-    width:min(80vw,450px);
-    height:min(60vh,550px);
+    width:500px;
+    height:550px;
 
     left:50%;
     top:52%;
 
-    transform:translate(-50%,-50%);
+    transform:
+    translate(-50%,-50%);
+
+    z-index:10;
 }
 
-/* Wax Seal */
 .seal{
 
     position:absolute;
 
-    width:140px;
+    width:150px;
 
     left:50%;
     bottom:90px;
 
-    transform:translateX(-50%);
+    transform:
+    translateX(-50%);
 
     cursor:pointer;
 
-    transition:.3s;
+    z-index:30;
 }
 
-.seal:hover{
-    transform:translateX(-50%) scale(1.08);
-}
-
-.tap-text{
+.instruction{
 
     position:absolute;
 
+    bottom:25px;
     left:50%;
-    bottom:35px;
 
-    transform:translateX(-50%);
+    transform:
+    translateX(-50%);
+
+    color:#5a4331;
+
+    letter-spacing:4px;
 
     font-size:14px;
-    letter-spacing:3px;
-    color:#5b4331;
 }
