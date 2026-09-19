@@ -3,73 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./style.css">
-
-<title>Mischief Managed</title>
-
-<style>
-body{
-    margin:0;
-    overflow:hidden;
-    background:transparent;
-}
-
-#viewer{
-    position:absolute;
-    inset:0;
-}
-</style>
-
-<script type="importmap">
-{
-  "imports": {
-    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
-    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
-  }
-}
-</script>
-</head>
-
-<body>
-
-
-
-    <div id="viewer"></div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Mischief Managed</title>
 
 <link rel="stylesheet" href="style.css">
-
-<script type="importmap">
-{
-  "imports": {
-    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
-    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
-  }
-}
-</script>
-
 </head>
 
 <body>
 
-<div class="cover">
+<div class="poster">
 
-    <!-- 3D Model -->
-    <div id="viewer"></div>
+    <!-- Title -->
+    <div class="title">
+        <h1>MISCHIEF<br>MANAGED</h1>
+        <p>A HIDDEN MANUSCRIPT<br>OF MEMORIES</p>
+    </div>
+
+    <!-- 3D Model Area -->
+    <div id="viewer">
+        <!-- Three.js will render here -->
+    </div>
 
     <!-- Wax Seal Button -->
     <img
         src="./assets/wax-seal.jpg"
-        class="seal"
         alt="Open"
+        class="seal"
         onclick="openBook()"
     >
+
+    <div class="tap-text">
+        TAP THE SEAL TO BEGIN
+    </div>
 
 </div>
 
