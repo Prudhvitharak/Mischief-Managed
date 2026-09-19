@@ -52,22 +52,4 @@ body{
 
 /* Invisible seal click area */
 
-.seal-button{
-    position:absolute;
-
-    left:50%;
-    top:10%;
-
-    width:110px;
-    height:110px;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:red;
-
-    opacity:1;
-
-    z-index:9999;
-}
+.seal-button{ position:absolute; left:50%; top:60%; width:110px; height:110px; transform:translate(-50%,-50%); border-radius:50%; z-index:20; cursor:pointer; background:transparent; }
