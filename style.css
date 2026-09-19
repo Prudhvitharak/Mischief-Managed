@@ -1,94 +1,193 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
-html,
-body{
+const viewer = document.getElementById("viewer");
 
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#000;
+/* Scene */
+const scene = new THREE.Scene();
 
-    font-family:serif;
-}
+/* Camera */
+const camera = new THREE.PerspectiveCamera(
+    35,
+    viewer.clientWidth / viewer.clientHeight,
+    0.1,
+    1000
+);
 
-.poster{
+camera.position.set(0, 1.1, 3.8);
 
-    position:relative;
+/* Renderer */
+const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true
+});
 
-    width:100vw;
-    height:100vh;
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
 
-    overflow:hidden;
-}
+renderer.setSize(
+    viewer.clientWidth,
+    viewer.clientHeight
+);
 
-.background{
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-    position:absolute;
+viewer.appendChild(renderer.domElement);
 
-    inset:0;
+/* Controls */
+const controls = new OrbitControls(
+    camera,
+    renderer.domElement
+);
 
-    width:100%;
-    height:100%;
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.enableRotate = false;
 
-    object-fit:cover;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 1.5;
 
-    z-index:1;
-}
+/* Lights */
 
-/* MODEL AREA */
-#viewer{
-    position:absolute;
+const ambientLight = new THREE.AmbientLight(
+    0xffffff,
+    3
+);
 
-    left:50%;
-    top:50%;
+scene.add(ambientLight);
 
-    width:55vw;
-    height:45vh;
+const keyLight = new THREE.DirectionalLight(
+    0xffffff,
+    4
+);
 
-    transform:translate(-50%,-50%);
+keyLight.position.set(
+    5,
+    10,
+    10
+);
 
-    z-index:10;
-}
+scene.add(keyLight);
 
-/* SEAL */
+const fillLight = new THREE.DirectionalLight(
+    0xffffff,
+    2
+);
 
-.seal-hitbox{
-    background:rgba(255,0,0,0.3);
-}
+fillLight.position.set(
+    -5,
+    5,
+    5
+);
 
-.seal:hover{
+scene.add(fillLight);
 
-    transform:
-    translateX(-50%)
-    scale(1.05);
-}
+/* Draco Loader */
 
-.seal:active{
+const dracoLoader = new DRACOLoader();
 
-    transform:
-    translateX(-50%)
-    scale(.95);
-}
+dracoLoader.setDecoderPath(
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+);
 
-/* MOBILE */
+/* GLTF Loader */
 
-@media(max-width:768px){
+const loader = new GLTFLoader();
 
-    #viewer{
+loader.setDRACOLoader(
+    dracoLoader
+);
 
-        width:100vw;
-        height:100vh;
+let model;
 
-        top:50%;
+loader.load(
+
+    "./assets/Model.glb",
+
+    (gltf) => {
+
+        model = gltf.scene;
+
+        model.scale.set(
+            1.4,
+            1.4,
+            1.4
+        );
+
+        model.position.set(
+            0,
+            -0.25,
+            0
+        );
+
+        scene.add(model);
+
+        console.log("Model Loaded");
+
+    },
+
+    (xhr) => {
+
+        if(xhr.total){
+
+            console.log(
+                Math.round(
+                    (xhr.loaded / xhr.total) * 100
+                ) + "% loaded"
+            );
+        }
+    },
+
+    (error) => {
+
+        console.error(
+            "Failed loading model:",
+            error
+        );
     }
+);
 
-    .seal{
+/* Animation Loop */
 
-        width:110px;
-        top:79%;
-    }
+function animate(){
+
+    requestAnimationFrame(
+        animate
+    );
+
+    controls.update();
+
+    renderer.render(
+        scene,
+        camera
+    );
 }
+
+animate();
+
+/* Responsive */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        const width =
+            viewer.clientWidth;
+
+        const height =
+            viewer.clientHeight;
+
+        camera.aspect =
+            width / height;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            width,
+            height
+        );
+    }
+);
