@@ -16,22 +16,24 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-camera.position.set(0, 1.2, 4);
+camera.position.set(0, 1.1, 3.8);
 
 /* Renderer */
 const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
+    alpha: true,
+    antialias: true
 });
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
 
 renderer.setSize(
     viewer.clientWidth,
     viewer.clientHeight
 );
 
-renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
-);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 viewer.appendChild(renderer.domElement);
 
@@ -43,21 +45,23 @@ const controls = new OrbitControls(
 
 controls.enableZoom = false;
 controls.enablePan = false;
+controls.enableRotate = false;
+
 controls.autoRotate = true;
 controls.autoRotateSpeed = 1.5;
 
-/* Lighting */
+/* Lights */
 
-scene.add(
-    new THREE.AmbientLight(
-        0xffffff,
-        3
-    )
+const ambientLight = new THREE.AmbientLight(
+    0xffffff,
+    3
 );
+
+scene.add(ambientLight);
 
 const keyLight = new THREE.DirectionalLight(
     0xffffff,
-    5
+    4
 );
 
 keyLight.position.set(
@@ -89,7 +93,7 @@ dracoLoader.setDecoderPath(
     "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
 );
 
-/* GLB Loader */
+/* GLTF Loader */
 
 const loader = new GLTFLoader();
 
@@ -97,44 +101,27 @@ loader.setDRACOLoader(
     dracoLoader
 );
 
+let model;
+
 loader.load(
 
     "./assets/Model.glb",
 
     (gltf) => {
 
-        const model = gltf.scene;
+        model = gltf.scene;
 
-        /* Mobile Friendly */
+        model.scale.set(
+            1.4,
+            1.4,
+            1.4
+        );
 
-        if(window.innerWidth < 768){
-
-            model.scale.set(
-                1.0,
-                1.0,
-                1.0
-            );
-
-            model.position.set(
-                0,
-                -0.1,
-                0
-            );
-
-        } else {
-
-            model.scale.set(
-                1.3,
-                1.3,
-                1.3
-            );
-
-            model.position.set(
-                0,
-                -0.3,
-                0
-            );
-        }
+        model.position.set(
+            0,
+            -0.25,
+            0
+        );
 
         scene.add(model);
 
@@ -144,23 +131,23 @@ loader.load(
 
     (xhr) => {
 
-        console.log(
-            Math.round(
-                xhr.loaded / xhr.total * 100
-            ) + "% loaded"
-        );
+        if(xhr.total){
 
+            console.log(
+                Math.round(
+                    (xhr.loaded / xhr.total) * 100
+                ) + "% loaded"
+            );
+        }
     },
 
     (error) => {
 
         console.error(
-            "Failed loading model",
+            "Failed loading model:",
             error
         );
-
     }
-
 );
 
 /* Animation Loop */
@@ -181,21 +168,26 @@ function animate(){
 
 animate();
 
-/* Resize */
+/* Responsive */
 
 window.addEventListener(
     "resize",
     () => {
 
-        camera.aspect =
-            viewer.clientWidth /
+        const width =
+            viewer.clientWidth;
+
+        const height =
             viewer.clientHeight;
+
+        camera.aspect =
+            width / height;
 
         camera.updateProjectionMatrix();
 
         renderer.setSize(
-            viewer.clientWidth,
-            viewer.clientHeight
+            width,
+            height
         );
     }
 );
