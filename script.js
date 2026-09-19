@@ -1,67 +1,65 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 const viewer = document.getElementById("viewer");
 
 /* Scene */
+
 const scene = new THREE.Scene();
 
 /* Camera */
+
 const camera = new THREE.PerspectiveCamera(
     35,
     viewer.clientWidth / viewer.clientHeight,
     0.1,
-    1000
+    100
 );
 
-camera.position.set(0, 1.1, 3.8);
+camera.position.set(
+    0,
+    1,
+    4
+);
 
 /* Renderer */
+
 const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: true
 });
-
-renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
-);
 
 renderer.setSize(
     viewer.clientWidth,
     viewer.clientHeight
 );
 
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
 
-viewer.appendChild(renderer.domElement);
+renderer.outputColorSpace =
+THREE.SRGBColorSpace;
 
-/* Controls */
-const controls = new OrbitControls(
-    camera,
+viewer.appendChild(
     renderer.domElement
 );
 
-controls.enableZoom = false;
-controls.enablePan = false;
-controls.enableRotate = false;
-
-controls.autoRotate = true;
-controls.autoRotateSpeed = 1.5;
-
 /* Lights */
 
-const ambientLight = new THREE.AmbientLight(
-    0xffffff,
-    3
+scene.add(
+    new THREE.AmbientLight(
+        0xffffff,
+        3
+    )
 );
 
-scene.add(ambientLight);
-
-const keyLight = new THREE.DirectionalLight(
+const keyLight =
+new THREE.DirectionalLight(
     0xffffff,
-    4
+    5
 );
 
 keyLight.position.set(
@@ -72,7 +70,8 @@ keyLight.position.set(
 
 scene.add(keyLight);
 
-const fillLight = new THREE.DirectionalLight(
+const fillLight =
+new THREE.DirectionalLight(
     0xffffff,
     2
 );
@@ -85,17 +84,19 @@ fillLight.position.set(
 
 scene.add(fillLight);
 
-/* Draco Loader */
+/* DRACO */
 
-const dracoLoader = new DRACOLoader();
+const dracoLoader =
+new DRACOLoader();
 
 dracoLoader.setDecoderPath(
     "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
 );
 
-/* GLTF Loader */
+/* GLTF */
 
-const loader = new GLTFLoader();
+const loader =
+new GLTFLoader();
 
 loader.setDRACOLoader(
     dracoLoader
@@ -107,29 +108,32 @@ loader.load(
 
     "./assets/Model.glb",
 
-    (gltf) => {
+    (gltf)=>{
 
         model = gltf.scene;
 
+        scene.add(model);
+
+        /* Adjust these 2 values only */
+
         model.scale.set(
-            1.4,
-            1.4,
-            1.4
+            1.2,
+            1.2,
+            1.2
         );
 
         model.position.set(
             0,
-            -0.25,
+            -0.5,
             0
         );
 
-        scene.add(model);
-
-        console.log("Model Loaded");
-
+        console.log(
+            "Model Loaded Successfully"
+        );
     },
 
-    (xhr) => {
+    (xhr)=>{
 
         if(xhr.total){
 
@@ -141,16 +145,16 @@ loader.load(
         }
     },
 
-    (error) => {
+    (error)=>{
 
         console.error(
-            "Failed loading model:",
+            "Failed to load model",
             error
         );
     }
 );
 
-/* Animation Loop */
+/* Animation */
 
 function animate(){
 
@@ -158,7 +162,11 @@ function animate(){
         animate
     );
 
-    controls.update();
+    if(model){
+
+        model.rotation.y +=
+        0.004;
+    }
 
     renderer.render(
         scene,
@@ -168,26 +176,21 @@ function animate(){
 
 animate();
 
-/* Responsive */
+/* Resize */
 
 window.addEventListener(
     "resize",
-    () => {
-
-        const width =
-            viewer.clientWidth;
-
-        const height =
-            viewer.clientHeight;
+    ()=>{
 
         camera.aspect =
-            width / height;
+        viewer.clientWidth /
+        viewer.clientHeight;
 
         camera.updateProjectionMatrix();
 
         renderer.setSize(
-            width,
-            height
+            viewer.clientWidth,
+            viewer.clientHeight
         );
     }
 );
