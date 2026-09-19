@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 const container = document.getElementById("viewer");
 
@@ -55,7 +55,14 @@ key.position.set(5,10,10);
 
 scene.add(key);
 
+const dracoLoader = new DRACOLoader();
+
+dracoLoader.setDecoderPath(
+  "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+);
+
 const loader = new GLTFLoader();
+loader.setDRACOLoader(dracoLoader);
 
 loader.load("assets/Model.glb", (gltf)=>{
 
