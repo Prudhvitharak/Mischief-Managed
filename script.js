@@ -81,7 +81,7 @@ loader.load(
 
         model.position.set(
             0,
-            isMobile ? 1.5 : 1,
+            isMobile ? 1.05 : 1.3,
             0
         );
     },
