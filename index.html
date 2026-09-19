@@ -1,50 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mischief Managed</title>
-
-<link rel="stylesheet" href="style.css">
-</head>
-
 <body>
 
 <div class="poster">
 
-    <!-- Title -->
     <div class="title">
-        <h1>MISCHIEF<br>MANAGED</h1>
-        <p>A HIDDEN MANUSCRIPT<br>OF MEMORIES</p>
+        <h1>
+            MISCHIEF<br>
+            MANAGED
+        </h1>
+
+        <p>
+            A HIDDEN MANUSCRIPT<br>
+            OF MEMORIES
+        </p>
     </div>
 
-    <!-- 3D Model Area -->
-    <div id="viewer">
-        <!-- Three.js will render here -->
-    </div>
+    <div id="viewer"></div>
 
-    <!-- Wax Seal Button -->
     <img
         src="./assets/wax-seal.jpg"
-        alt="Open"
         class="seal"
         onclick="openBook()"
     >
 
-    <div class="tap-text">
+    <div class="instruction">
         TAP THE SEAL TO BEGIN
     </div>
 
 </div>
 
-<script>
-function openBook(){
-    window.location.href = "./chapters/chapter1.html";
-}
-</script>
-
 <script type="module" src="./script.js"></script>
 
 </body>
-</html>
