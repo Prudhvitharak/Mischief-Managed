@@ -35,7 +35,7 @@ new THREE.PerspectiveCamera(
 camera.position.set(
     0,
     0.8,
-    3.2
+    4.5
 );
 
 /* RENDERER */
@@ -194,11 +194,9 @@ loader.load(
         const scale =
         2.8 /
         maxDimension;
-
         model.scale.setScalar(
-            scale
+            scale * 0.75
         );
-
         model.position.set(
             0,
             -0.2,
