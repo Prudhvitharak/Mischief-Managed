@@ -18,7 +18,7 @@ loader.load(
 
           model.position.set(
             0,
-            -0.15,
+            2,
             0
           );
 
