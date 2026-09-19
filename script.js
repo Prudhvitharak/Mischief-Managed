@@ -57,20 +57,17 @@ scene.add(key);
 
 const loader = new GLTFLoader();
 
-loader.load(
-  "assets/Model.glb",
+loader.load("assets/Model.glb", (gltf)=>{
 
-  (gltf)=>{
+    const model = gltf.scene;
 
-      const model = gltf.scene;
+    model.scale.set(2.5,2.5,2.5);
 
-      model.scale.set(1.8,1.8,1.8);
+    model.position.set(0,-1.3,0);
 
-      model.position.y = -1.5;
+    scene.add(model);
 
-      scene.add(model);
-  },
-
+});
   undefined,
 
   (error)=>{
