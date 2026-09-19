@@ -1,78 +1,201 @@
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+
+const viewer = document.getElementById("viewer");
+
+/* Scene */
+const scene = new THREE.Scene();
+
+/* Camera */
+const camera = new THREE.PerspectiveCamera(
+    35,
+    viewer.clientWidth / viewer.clientHeight,
+    0.1,
+    1000
+);
+
+camera.position.set(0, 1.2, 4);
+
+/* Renderer */
+const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+});
+
+renderer.setSize(
+    viewer.clientWidth,
+    viewer.clientHeight
+);
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
+
+viewer.appendChild(renderer.domElement);
+
+/* Controls */
+const controls = new OrbitControls(
+    camera,
+    renderer.domElement
+);
+
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 1.5;
+
+/* Lighting */
+
+scene.add(
+    new THREE.AmbientLight(
+        0xffffff,
+        3
+    )
+);
+
+const keyLight = new THREE.DirectionalLight(
+    0xffffff,
+    5
+);
+
+keyLight.position.set(
+    5,
+    10,
+    10
+);
+
+scene.add(keyLight);
+
+const fillLight = new THREE.DirectionalLight(
+    0xffffff,
+    2
+);
+
+fillLight.position.set(
+    -5,
+    5,
+    5
+);
+
+scene.add(fillLight);
+
+/* Draco Loader */
+
+const dracoLoader = new DRACOLoader();
+
+dracoLoader.setDecoderPath(
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+);
+
+/* GLB Loader */
+
+const loader = new GLTFLoader();
+
+loader.setDRACOLoader(
+    dracoLoader
+);
+
 loader.load(
 
-  "./assets/Model.glb",
+    "./assets/Model.glb",
 
-  (gltf)=>{
+    (gltf) => {
 
-      const model = gltf.scene;
+        const model = gltf.scene;
 
-      const isMobile = window.innerWidth < 768;
+        /* Mobile Friendly */
 
-      if(isMobile){
+        if(window.innerWidth < 768){
 
-          model.scale.set(
-            1.0,
-            1.0,
-            1.0
-          );
+            model.scale.set(
+                1.0,
+                1.0,
+                1.0
+            );
 
-          model.position.set(
-            0,
-            2,
-            0
-          );
+            model.position.set(
+                0,
+                -0.1,
+                0
+            );
 
-          camera.position.set(
-            0,
-            1.1,
-            2.8
-          );
+        } else {
 
-      }else{
+            model.scale.set(
+                1.3,
+                1.3,
+                1.3
+            );
 
-          model.scale.set(
-            1.3,
-            1.3,
-            1.3
-          );
+            model.position.set(
+                0,
+                -0.3,
+                0
+            );
+        }
 
-          model.position.set(
-            0,
-            -0.3,
-            0
-          );
+        scene.add(model);
 
-          camera.position.set(
-            0,
-            1.5,
-            4
-          );
-      }
+        console.log("Model Loaded");
 
-      scene.add(model);
+    },
 
-      controls.target.set(
-        0,
-        0.8,
-        0
-      );
+    (xhr) => {
 
-      console.log("Loaded");
-  },
+        console.log(
+            Math.round(
+                xhr.loaded / xhr.total * 100
+            ) + "% loaded"
+        );
 
-  (xhr)=>{
+    },
 
-      console.log(
-        ((xhr.loaded / xhr.total) * 100).toFixed(0)
-        + "% loaded"
-      );
-  },
+    (error) => {
 
-  (error)=>{
+        console.error(
+            "Failed loading model",
+            error
+        );
 
-      console.error(
-        "Model failed:",
-        error
-      );
-  }
+    }
+
+);
+
+/* Animation Loop */
+
+function animate(){
+
+    requestAnimationFrame(
+        animate
+    );
+
+    controls.update();
+
+    renderer.render(
+        scene,
+        camera
+    );
+}
+
+animate();
+
+/* Resize */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        camera.aspect =
+            viewer.clientWidth /
+            viewer.clientHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+            viewer.clientWidth,
+            viewer.clientHeight
+        );
+    }
 );
