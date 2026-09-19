@@ -4,10 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
+      content="width=device-width,initial-scale=1.0">
 
 <title>Mischief Managed</title>
 
@@ -36,11 +33,11 @@
 
     <div id="viewer"></div>
 
-
+    <!-- Invisible clickable seal area -->
     <div
-    class="seal-hitbox"
-    onclick="openBook()">
-</div>
+        class="seal-hitbox"
+        onclick="openBook()">
+    </div>
 
 </div>
 
@@ -48,9 +45,10 @@
 
 function openBook(){
 
-    window.location.href =
-    "./chapters/chapter1.html";
+    alert("Open Book");
 
+    // window.location.href =
+    // "./chapters/chapter1.html";
 }
 
 </script>
