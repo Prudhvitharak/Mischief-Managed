@@ -7,15 +7,24 @@
 <title>Mischief Managed</title>
 
 <link rel="stylesheet" href="style.css">
+
+<script type="importmap">
+{
+  "imports": {
+    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
+    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 
 <body>
 
 <div class="cover">
 
-    <h1>MISCHIEF MANAGED</h1>
+    <img src="assets/figurine.png" class="fallback">
 
-    <img src="assets/figurine.png" alt="figurine" class="figurine">
+    <div id="viewer"></div>
 
     <button class="seal" onclick="openBook()">
         OPEN
@@ -23,7 +32,7 @@
 
 </div>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
