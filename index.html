@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
@@ -22,14 +23,19 @@
 </script>
 
 </head>
+
 <body>
 
 <div class="poster">
 
-    <!-- 3D Model -->
+    <img
+        src="./assets/Background.png"
+        class="background"
+        alt=""
+    >
+
     <div id="viewer"></div>
 
-    <!-- Wax Seal Button -->
     <img
         src="./assets/wax-seal.jpg"
         class="seal"
@@ -40,9 +46,14 @@
 </div>
 
 <script>
+
 function openBook(){
-    window.location.href="./chapters/chapter1.html";
+
+    window.location.href =
+    "./chapters/chapter1.html";
+
 }
+
 </script>
 
 <script type="module" src="./script.js"></script>
