@@ -1,18 +1,11 @@
 function openBook(){
 
-    alert(
-`Welcome, Traveller.
+document.body.style.opacity="0";
 
-Only those who know the story may continue.
+setTimeout(() => {
 
-Mischief Managed.`
-    );
+window.location.href="map.html";
 
-    document.body.classList.add("fade-out");
+},1000);
 
-    setTimeout(() => {
-
-        window.location.href = "map.html";
-
-    }, 1000);
 }
