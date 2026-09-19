@@ -17,15 +17,15 @@ body{
 .poster{
     position:relative;
 
-    width:100vw;
-    height:100vh;
+    width:50vw;
+    height:50vh;
 
     background-image:url("./assets/Background.png");
     background-repeat:no-repeat;
     background-position:center center;
 
     /* CHANGE THIS */
-    background-size:contain;
+    background-size:cover;
 
     background-color:#d9c1a0;
 }
