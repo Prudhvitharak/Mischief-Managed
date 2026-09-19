@@ -12,12 +12,8 @@ from "three/addons/loaders/DRACOLoader.js";
 const viewer =
 document.getElementById("viewer");
 
-/* SCENE */
-
 const scene =
 new THREE.Scene();
-
-/* CAMERA */
 
 const camera =
 new THREE.PerspectiveCamera(
@@ -38,26 +34,23 @@ camera.position.set(
     4.5
 );
 
-/* RENDERER */
-
 const renderer =
 new THREE.WebGLRenderer({
 
     alpha:true,
     antialias:true
-
 });
+
+renderer.setSize(
+    viewer.clientWidth,
+    viewer.clientHeight
+);
 
 renderer.setPixelRatio(
     Math.min(
         window.devicePixelRatio,
         2
     )
-);
-
-renderer.setSize(
-    viewer.clientWidth,
-    viewer.clientHeight
 );
 
 renderer.outputColorSpace =
@@ -71,9 +64,7 @@ viewer.appendChild(
 
 const controls =
 new OrbitControls(
-
     camera,
-
     renderer.domElement
 );
 
@@ -83,20 +74,11 @@ controls.enablePan = false;
 controls.autoRotate = true;
 controls.autoRotateSpeed = 1;
 
-controls.minPolarAngle =
-Math.PI / 2;
-
-controls.maxPolarAngle =
-Math.PI / 2;
-
 /* LIGHTS */
 
 scene.add(
-
     new THREE.AmbientLight(
-
         0xffffff,
-
         3
     )
 );
@@ -104,7 +86,7 @@ scene.add(
 const light1 =
 new THREE.DirectionalLight(
     0xffffff,
-    5
+    4
 );
 
 light1.position.set(
@@ -149,9 +131,6 @@ loader.setDRACOLoader(
 
 let model;
 
-const clock =
-new THREE.Clock();
-
 loader.load(
 
     "./assets/Model.glb",
@@ -167,11 +146,6 @@ loader.load(
         new THREE.Box3()
         .setFromObject(model);
 
-        const size =
-        box.getSize(
-            new THREE.Vector3()
-        );
-
         const center =
         box.getCenter(
             new THREE.Vector3()
@@ -181,22 +155,12 @@ loader.load(
             center
         );
 
-        const maxDimension =
-        Math.max(
-
-            size.x,
-
-            size.y,
-
-            size.z
+        model.scale.set(
+            1.0,
+            1.0,
+            1.0
         );
 
-        const scale =
-        2.8 /
-        maxDimension;
-        model.scale.setScalar(
-            scale * 0.75
-        );
         model.position.set(
             0,
             -0.2,
@@ -205,12 +169,8 @@ loader.load(
 
         controls.target.set(
             0,
-            0.3,
+            0.4,
             0
-        );
-
-        console.log(
-            "Model Loaded"
         );
     },
 
@@ -218,32 +178,17 @@ loader.load(
 
     (error)=>{
 
-        console.error(
-            error
-        );
+        console.error(error);
     }
 );
 
-/* ANIMATE */
+/* ANIMATION */
 
 function animate(){
 
     requestAnimationFrame(
         animate
     );
-
-    if(model){
-
-        model.position.y =
-
-        -0.2 +
-
-        Math.sin(
-
-            clock.getElapsedTime()
-
-        ) * 0.03;
-    }
 
     controls.update();
 
@@ -263,21 +208,15 @@ window.addEventListener(
 
     ()=>{
 
-        const width =
-        viewer.clientWidth;
-
-        const height =
-        viewer.clientHeight;
-
         camera.aspect =
-        width /
-        height;
+        viewer.clientWidth /
+        viewer.clientHeight;
 
         camera.updateProjectionMatrix();
 
         renderer.setSize(
-            width,
-            height
+            viewer.clientWidth,
+            viewer.clientHeight
         );
     }
 );
