@@ -46,21 +46,21 @@ body{
 
 .juliee{
 
-    width:90px;
-    height:90px;
+    width:70px;
+    height:70px;
 
-    top:26%;
-    left:42%;
+    top:30%;
+    left:38%;
 }
 
 /* Grass */
 
 .grass{
 
-    width:90px;
-    height:90px;
+    width:70px;
+    height:70px;
 
-    top:47%;
+    top:43%;
     left:60%;
 }
 
@@ -68,11 +68,11 @@ body{
 
 .transit{
 
-    width:90px;
-    height:90px;
+    width:70px;
+    height:70px;
 
-    top:63%;
-    left:25%;
+    top:58%;
+    left:30%;
 }
 
 /* Flight */
@@ -82,7 +82,7 @@ body{
     width:90px;
     height:90px;
 
-    top:78%;
+    top:65%;
     left:58%;
 }
 
@@ -92,10 +92,10 @@ body{
 
     position:absolute;
 
-    bottom:3%;
+    bottom:20%;
     right:4%;
 
-    width:200px;
+    width:100px;
     height:70px;
 
     background:transparent;
