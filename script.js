@@ -245,7 +245,7 @@ document
 
             document
             .getElementById("questionModal")
-            .classList.add("show");";
+            .classList.add("show");
 
         }
         else{
