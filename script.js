@@ -1,132 +1,180 @@
-import * as THREE from "three";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.165/build/three.module.js";
 
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+import { GLTFLoader }
+from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/GLTFLoader.js";
 
-const viewer = document.getElementById("viewer");
+import { DRACOLoader }
+from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/DRACOLoader.js";
 
-const isMobile = window.matchMedia("(max-width: 600px)").matches;
+const container =
+document.getElementById("model-container");
 
-/* Scene */
+const scene =
+new THREE.Scene();
 
-const scene = new THREE.Scene();
-
-/* Camera */
-
-const camera = new THREE.PerspectiveCamera(
-    isMobile ? 42 : 35,
-    viewer.clientWidth / viewer.clientHeight,
-    0.1,
-    100
+const camera =
+new THREE.PerspectiveCamera(
+35,
+container.clientWidth /
+container.clientHeight,
+0.1,
+100
 );
 
-camera.position.set(
-    0,
-    isMobile ? 0.8 : 1,
-    isMobile ? 5 : 4
-);
+camera.position.z = 5;
 
-/* Renderer */
-
-const renderer = new THREE.WebGLRenderer({
-    alpha: true,
-    antialias: true
+const renderer =
+new THREE.WebGLRenderer({
+alpha:true,
+antialias:true
 });
 
 renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
+window.devicePixelRatio
 );
 
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
+);
 
-viewer.appendChild(renderer.domElement);
+container.appendChild(
+renderer.domElement
+);
 
 /* Lights */
 
-scene.add(new THREE.AmbientLight(0xffffff, 3));
-
-const keyLight = new THREE.DirectionalLight(0xffffff, 5);
-keyLight.position.set(5, 10, 10);
-scene.add(keyLight);
-
-const fillLight = new THREE.DirectionalLight(0xffffff, 2);
-fillLight.position.set(-5, 5, 5);
-scene.add(fillLight);
-
-/* DRACO */
-
-const dracoLoader = new DRACOLoader();
-
-dracoLoader.setDecoderPath(
-    "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+scene.add(
+new THREE.AmbientLight(
+0xffffff,
+2
+)
 );
 
-/* GLTF */
+const dir =
+new THREE.DirectionalLight(
+0xffffff,
+2.5
+);
 
-const loader = new GLTFLoader();
-loader.setDRACOLoader(dracoLoader);
+dir.position.set(
+5,
+5,
+5
+);
+
+scene.add(dir);
+
+/* Draco */
+
+const draco =
+new DRACOLoader();
+
+draco.setDecoderPath(
+"https://www.gstatic.com/draco/v1/decoders/"
+);
+
+const loader =
+new GLTFLoader();
+
+loader.setDRACOLoader(
+draco
+);
 
 let model;
 
+/* Load Model */
+
 loader.load(
-    "./assets/Model.glb",
+"assets/Model.glb",
 
-    (gltf) => {
-        model = gltf.scene;
-        scene.add(model);
+(gltf)=>{
 
-        const scale = isMobile ? 0.85 : 1.2;
+    model = gltf.scene;
 
-        model.scale.set(scale, scale, scale);
+    scene.add(model);
 
-        model.position.set(
-            0,
-            isMobile ? 1.05 : 1.3,
-            0
-        );
-    },
+    const scale = 1.3;
 
-    (xhr) => {
-        if (xhr.total) {
-            console.log(
-                Math.round((xhr.loaded / xhr.total) * 100) + "% loaded"
-            );
-        }
-    },
+    model.scale.set(
+        scale,
+        scale,
+        scale
+    );
 
-    (error) => {
-        console.error("Failed to load model", error);
-    }
+    model.position.set(
+        0,
+        -1.2,
+        0
+    );
+
+},
+
+undefined,
+
+(error)=>{
+    console.error(error);
+}
 );
 
-/* Resize */
+/* Hover Animation */
 
-function resizeViewer() {
-    const width = viewer.clientWidth;
-    const height = viewer.clientHeight;
+function animate(){
 
-    if (!width || !height) return;
+    requestAnimationFrame(
+        animate
+    );
 
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    if(model){
 
-    renderer.setSize(width, height, false);
-}
-
-resizeViewer();
-
-/* Animation */
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    if (model) {
-        model.rotation.y += 0.004;
+    
+        model.position.y =
+        -1.2 +
+        Math.sin(
+            Date.now()*0.0015
+        )*0.12;
     }
 
-    renderer.render(scene, camera);
+    renderer.render(
+        scene,
+        camera
+    );
 }
 
 animate();
 
-window.addEventListener("resize", resizeViewer);
+/* Responsive */
+
+window.addEventListener(
+"resize",
+()=>{
+
+renderer.setSize(
+container.clientWidth,
+container.clientHeight
+);
+
+camera.aspect =
+container.clientWidth/
+container.clientHeight;
+
+camera.updateProjectionMatrix();
+
+// OPEN BUTTON CLICK
+
+document
+    .getElementById("openButton")
+    .addEventListener("click", () => {
+
+        window.location.href = "map.html";
+
+    });
+
+});
+
+
+const draco = new DRACOLoader();
+
+draco.setDecoderPath(
+'https://www.gstatic.com/draco/v1/decoders/'
+);
