@@ -47,20 +47,7 @@ body{
    HOTSPOTS
 ========================= */
 
-.spot{
 
-    position:absolute;
-
-    border-radius:50%;
-
-    background:rgba(255,0,0,0.35);
-
-    border:2px solid red;
-
-    z-index:10;
-
-    cursor:pointer;
-}
 
 /* =========================
    JULIEE TO JUHI
