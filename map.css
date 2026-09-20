@@ -6,109 +6,115 @@
 
 html,
 body{
-
     width:100%;
     height:100%;
-
     overflow:hidden;
-
     background:#000;
+}
+
+/* Container */
+
+.map-container{
+    position:relative;
+    width:100vw;
+    height:100vh;
 }
 
 /* Map Image */
 
 .map{
-    width:92%;
-    height:92vh;
-
+    width:100%;
+    height:100%;
     object-fit:contain;
-
     display:block;
-    margin:auto;
 }
 
-/* Clickable Spots */
+/* All Hotspots */
 
 .spot{
-
     position:absolute;
 
+    border:none;
     border-radius:50%;
 
-    background:rgba(255,255,255,0);
-
+    background:rgba(255,0,0,0.25); /* TEMPORARY */
     cursor:pointer;
 
     z-index:10;
 }
 
-/* Juliee */
+/* Juliee to Juhi */
 
 .juliee{
+    width:80px;
+    height:80px;
 
-    width:70px;
-    height:70px;
-
-    top:30%;
-    left:38%;
+    top:27%;
+    left:43%;
 }
 
-/* Grass */
+/* Grass and Gossips */
 
 .grass{
+    width:80px;
+    height:80px;
 
-    width:70px;
-    height:70px;
-
-    top:43%;
-    left:60%;
+    top:46%;
+    left:58%;
 }
 
-/* Transit */
+/* Transit and Talks */
 
 .transit{
+    width:80px;
+    height:80px;
 
-    width:70px;
-    height:70px;
-
-    top:58%;
-    left:30%;
+    top:60%;
+    left:33%;
 }
 
-/* Flight */
+/* Flabbergasted Flight */
 
 .flight{
-
     width:90px;
     height:90px;
 
-    top:65%;
-    left:58%;
+    top:73%;
+    left:57%;
 }
 
 /* Next Page */
 
 #nextBtn{
-
     position:absolute;
 
-    bottom:20%;
-    right:4%;
+    bottom:8%;
+    right:6%;
 
-    width:100px;
-    height:70px;
+    width:180px;
+    height:80px;
 
-    background:transparent;
+    background:rgba(0,255,0,0.25); /* TEMPORARY */
 
     border:none;
-
     cursor:pointer;
 
     z-index:20;
 }
 
-body{
+/* Hover */
 
-    transition:
-    opacity .5s ease;
+.spot:hover,
+#nextBtn:hover{
+    background:rgba(255,255,255,0.25);
+}
+
+/* Page Transition */
+
+body{
+    transition:opacity .5s ease;
+}
+
+body.fade{
+    opacity:0;
 }
