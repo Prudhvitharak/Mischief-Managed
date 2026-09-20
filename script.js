@@ -191,22 +191,64 @@ window.addEventListener(
 /* ------------------------
    OPEN BUTTON
 ------------------------ */
-
 const openButton =
-    document.getElementById(
-        "openButton"
-    );
+document.getElementById("openButton");
 
-if (openButton) {
+const modal =
+document.getElementById("passwordModal");
 
-    openButton.addEventListener(
-        "click",
-        () => {
+openButton.addEventListener(
+    "click",
+    () => {
+
+        modal.classList.add("show");
+
+    }
+);
+
+const hintBtn =
+document.getElementById("hintBtn");
+
+const hintText =
+document.getElementById("hintText");
+
+hintBtn.addEventListener(
+    "click",
+    () => {
+
+        hintText.style.display =
+        hintText.style.display === "block"
+        ? "none"
+        : "block";
+
+    }
+);
+
+document
+.getElementById("unlockBtn")
+.addEventListener(
+    "click",
+    () => {
+
+        const password =
+        document
+        .getElementById("passwordInput")
+        .value;
+
+        if(
+            password === "YOUR_PASSWORD_HERE"
+        ){
 
             window.location.href =
-                "map.html";
+            "map.html";
 
         }
-    );
+        else{
 
-}
+            alert(
+                "Mischief Managed... Incorrect Password."
+            );
+        }
+
+    }
+);
