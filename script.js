@@ -297,7 +297,7 @@ document
     () => {
 
         window.location.href =
-        "map.html";
+        "map1.html";
 
     }
 );
