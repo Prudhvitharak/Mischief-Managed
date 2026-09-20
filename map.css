@@ -71,8 +71,8 @@ body{
     width:110px;
     height:110px;
 
-    top:27%;
-    left:33%;
+    top:24%;
+    left:30%;
 }
 
 /* =========================
@@ -97,8 +97,8 @@ body{
     width:110px;
     height:110px;
 
-    top:51%;
-    left:33%;
+    top:50%;
+    left:30%;
 }
 
 /* =========================
@@ -122,10 +122,10 @@ body{
 
     position:absolute;
 
-    width:120px;
+    width:170px;
     height:100px;
 
-    bottom:4%;
+    bottom:10%;
     right:1%;
 
     background:rgba(0,255,0,0.35);
