@@ -236,7 +236,7 @@ document
         .value;
 
         if(
-            password === "YOUR_PASSWORD_HERE"
+            password === "0.32"
         ){
 
             window.location.href =
