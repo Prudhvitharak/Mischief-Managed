@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#000;
+}
+
+/* Map Image */
+
+.map{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+    object-fit:cover;
+}
+
+/* Clickable Spots */
+
+.spot{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0);
+
+    cursor:pointer;
+
+    z-index:10;
+}
+
+/* Juliee */
+
+.juliee{
+
+    width:90px;
+    height:90px;
+
+    top:26%;
+    left:42%;
+}
+
+/* Grass */
+
+.grass{
+
+    width:90px;
+    height:90px;
+
+    top:47%;
+    left:60%;
+}
+
+/* Transit */
+
+.transit{
+
+    width:90px;
+    height:90px;
+
+    top:63%;
+    left:25%;
+}
+
+/* Flight */
+
+.flight{
+
+    width:90px;
+    height:90px;
+
+    top:78%;
+    left:58%;
+}
+
+/* Next Page */
+
+#nextBtn{
+
+    position:absolute;
+
+    bottom:3%;
+    right:4%;
+
+    width:200px;
+    height:70px;
+
+    background:transparent;
+
+    border:none;
+
+    cursor:pointer;
+
+    z-index:20;
+}
