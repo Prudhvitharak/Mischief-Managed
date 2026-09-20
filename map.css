@@ -60,7 +60,6 @@ body{
 /* ------------------------
    JULIEE TO JUHI
 ------------------------ */
-
 /* JULIEE */
 
 .juliee{
@@ -68,8 +67,8 @@ body{
     width:110px;
     height:110px;
 
-    top:42%;
-    left:38%;
+    top:28%;
+    left:35%;
 }
 
 /* GRASS */
@@ -79,7 +78,7 @@ body{
     width:110px;
     height:110px;
 
-    top:51%;
+    top:45%;
     left:65%;
 }
 
@@ -90,8 +89,8 @@ body{
     width:110px;
     height:110px;
 
-    top:60%;
-    left:38%;
+    top:51%;
+    left:35%;
 }
 
 /* FLIGHT */
@@ -101,7 +100,7 @@ body{
     width:110px;
     height:110px;
 
-    top:67%;
+    top:64%;
     left:58%;
 }
 
@@ -114,8 +113,8 @@ body{
     width:100px;
     height:70px;
 
-    bottom:18%;
-    right:5%;
+    bottom:2%;
+    right:2%;
 
     background:rgba(0,255,0,.3);
     border:2px solid lime;
