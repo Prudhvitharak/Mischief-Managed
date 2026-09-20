@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 />
 
 <title>Mischief Managed</title>
 
 <link rel="stylesheet" href="style.css">
+
+<!-- THREE JS IMPORT MAP -->
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.165/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/"
+    }
+}
+</script>
+
 </head>
+
 <body>
 
 <div class="cover">
 
-    <!-- Background Poster -->
+    <!-- Background -->
+
     <img
         src="assets/Background.png"
         class="background"
         alt=""
     >
 
-    <!-- 3D Model Area -->
+    <!-- 3D Model -->
+
     <div id="model-container"></div>
 
-    <!-- Invisible Click Zone -->
+    <!-- Invisible Wax Seal Button -->
+
     <button id="openButton"></button>
 
 </div>
