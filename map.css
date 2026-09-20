@@ -23,20 +23,18 @@ body{
 
     position:relative;
 
-    width:100vw;
+    width:100%;
     height:100vh;
-}
 
-/* ------------------------
-   MAP IMAGE
------------------------- */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
 .map{
 
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
+    width:auto;
+    height:95vh;
 
     display:block;
 }
@@ -68,71 +66,54 @@ body{
     width:90px;
     height:90px;
 
-    top:27%;
-    left:43%;
+    top:30%;
+    left:48%;
 }
-
-/* ------------------------
-   GRASS & GOSSIPS
------------------------- */
 
 .grass{
 
     width:90px;
     height:90px;
 
-    top:46%;
+    top:47%;
     left:58%;
 }
-
-/* ------------------------
-   TRANSIT & TALKS
------------------------- */
 
 .transit{
 
     width:90px;
     height:90px;
 
-    top:60%;
-    left:33%;
+    top:61%;
+    left:39%;
 }
-
-/* ------------------------
-   FLABBERGASTED FLIGHT
------------------------- */
 
 .flight{
 
-    width:110px;
-    height:110px;
+    width:95px;
+    height:95px;
 
     top:73%;
-    left:57%;
+    left:56%;
 }
-
 /* ------------------------
    NEXT BUTTON
 ------------------------ */
-
 #nextBtn{
 
     position:absolute;
 
-    bottom:8%;
-    right:5%;
-
-    width:160px;
+    width:180px;
     height:80px;
 
-    background:rgba(0,255,0,0.30);
+    bottom:8%;
+    right:15%;
+
+    background:rgba(0,255,0,.3);
     border:2px solid lime;
 
     cursor:pointer;
-
-    z-index:20;
 }
-
 /* ------------------------
    HOVER
 ------------------------ */
