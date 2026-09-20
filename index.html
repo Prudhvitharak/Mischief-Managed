@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,8 +14,6 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- THREE JS IMPORT MAP -->
-
 <script type="importmap">
 {
     "imports": {
@@ -25,6 +24,11 @@
 </script>
 
 </head>
+
+<body>
+
+<!-- PASSWORD MODAL -->
+
 <div id="passwordModal" class="modal">
 
     <div class="modal-card">
@@ -59,6 +63,8 @@
 
 </div>
 
+<!-- QUESTION MODAL -->
+
 <div id="questionModal" class="modal">
 
     <div class="modal-card">
@@ -70,36 +76,21 @@
         </p>
 
         <div class="option">
-            <input
-                type="radio"
-                name="memory"
-                id="opt1"
-                value="steps"
-            >
+            <input type="radio" name="memory" id="opt1" value="steps">
             <label for="opt1">
                 Near the steps of Shanthikithan Mall
             </label>
         </div>
 
         <div class="option">
-            <input
-                type="radio"
-                name="memory"
-                id="opt2"
-                value="sheraton"
-            >
+            <input type="radio" name="memory" id="opt2" value="sheraton">
             <label for="opt2">
                 During the Sheraton night when we skipped dinner with Kedar & Co.
             </label>
         </div>
 
         <div class="option">
-            <input
-                type="radio"
-                name="memory"
-                id="opt3"
-                value="surat"
-            >
+            <input type="radio" name="memory" id="opt3" value="surat">
             <label for="opt3">
                 Surat hotel grass time
             </label>
@@ -113,6 +104,8 @@
 
 </div>
 
+<!-- KEDAR MODAL -->
+
 <div id="kedarModal" class="modal">
 
     <div class="modal-card">
@@ -120,17 +113,11 @@
         <h1>😜</h1>
 
         <p>
-
-            Thanks to Kedar for not inviting us
-            to dinner that day.
-
+            Thanks to Kedar for not inviting us to dinner that day.
         </p>
 
         <p>
-
-            Some stories start in
-            unexpected ways.
-
+            Some stories start in unexpected ways.
         </p>
 
         <button id="openMapBtn">
@@ -141,11 +128,9 @@
 
 </div>
 
-<body>
+<!-- MAIN PAGE -->
 
 <div class="cover">
-
-    <!-- Background -->
 
     <img
         src="assets/Background.png"
@@ -153,11 +138,7 @@
         alt=""
     >
 
-    <!-- 3D Model -->
-
     <div id="model-container"></div>
-
-    <!-- Invisible Wax Seal Button -->
 
     <button id="openButton"></button>
 
