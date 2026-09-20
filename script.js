@@ -172,9 +172,3 @@ document
 
 });
 
-
-const draco = new DRACOLoader();
-
-draco.setDecoderPath(
-'https://www.gstatic.com/draco/v1/decoders/'
-);
