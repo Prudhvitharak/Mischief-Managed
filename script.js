@@ -107,7 +107,7 @@ loader.load(
 
         scene.add(model);
 
-        const scale = 1.3;
+        const scale = 1.7;
 
         model.scale.set(
             scale,
@@ -117,7 +117,7 @@ loader.load(
 
         model.position.set(
             0,
-            -1.2,
+            -0.5,
             0
         );
 
@@ -151,7 +151,7 @@ function animate() {
     if (model) {
 
         model.position.y =
-            -1.2 +
+            -0.5 +
             Math.sin(
                 Date.now() * 0.0015
             ) * 0.12;
