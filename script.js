@@ -1,8 +1,8 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.165/build/three.module.js";
+import * as THREE from "https://cdn.skypack.dev/three@0.165.0";
 
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.165.0/examples/jsm/loaders/GLTFLoader";
 
-import { DRACOLoader } from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/DRACOLoader.js";
+import { DRACOLoader } from "https://cdn.skypack.dev/three@0.165.0/examples/jsm/loaders/DRACOLoader";
 
 /* ------------------------
    CONTAINER
