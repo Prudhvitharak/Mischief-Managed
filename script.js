@@ -257,3 +257,48 @@ document
 
     }
 );
+
+
+document
+.getElementById("continueBtn")
+.addEventListener(
+    "click",
+    () => {
+
+        const selected =
+        document.querySelector(
+            'input[name="memory"]:checked'
+        );
+
+        if(!selected){
+
+            alert(
+                "Choose one memory first 😊"
+            );
+
+            return;
+        }
+
+        document
+        .getElementById("questionModal")
+        .classList.remove("show");
+
+        document
+        .getElementById("kedarModal")
+        .classList.add("show");
+
+    }
+);
+
+document
+.getElementById("openMapBtn")
+.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+        "map.html";
+
+    }
+);
+
