@@ -1,8 +1,8 @@
-import * as THREE from "https://cdn.skypack.dev/three@0.165.0";
+import * as THREE from "three";
 
-import { GLTFLoader } from "https://cdn.skypack.dev/three@0.165.0/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-import { DRACOLoader } from "https://cdn.skypack.dev/three@0.165.0/examples/jsm/loaders/DRACOLoader";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 /* ------------------------
    CONTAINER
