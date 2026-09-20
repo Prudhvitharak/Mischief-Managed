@@ -61,44 +61,68 @@ body{
    JULIEE TO JUHI
 ------------------------ */
 
+/* JULIEE */
+
 .juliee{
+
     width:110px;
     height:110px;
 
-    top:38%;
-    left:41%;
+    top:42%;
+    left:38%;
 }
+
+/* GRASS */
 
 .grass{
+
     width:110px;
     height:110px;
 
-    top:55%;
-    left:58%;
+    top:51%;
+    left:65%;
 }
 
+/* TRANSIT */
+
 .transit{
+
+    width:110px;
+    height:110px;
+
+    top:60%;
+    left:38%;
+}
+
+/* FLIGHT */
+
+.flight{
+
     width:110px;
     height:110px;
 
     top:67%;
-    left:38%;
+    left:58%;
 }
 
-.flight{
-    width:110px;
-    height:110px;
-
-    top:80%;
-    left:55%;
-}
+/* NEXT PAGE */
 
 #nextBtn{
-    width:170px;
+
+    position:absolute;
+
+    width:100px;
     height:70px;
 
-    bottom:10%;
-    right:8%;
+    bottom:18%;
+    right:5%;
+
+    background:rgba(0,255,0,.3);
+    border:2px solid lime;
+
+    cursor:pointer;
+
+    z-index:20;
 }
 /* ------------------------
    PAGE FADE
