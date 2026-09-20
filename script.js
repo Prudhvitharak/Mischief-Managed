@@ -1,138 +1,161 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.165/build/three.module.js";
 
-import { GLTFLoader }
-from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/GLTFLoader.js";
 
-import { DRACOLoader }
-from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/DRACOLoader.js";
+import { DRACOLoader } from "https://cdn.jsdelivr.net/npm/three@0.165/examples/jsm/loaders/DRACOLoader.js";
 
-const container =
-document.getElementById("model-container");
+/* ------------------------
+   CONTAINER
+------------------------ */
 
-const scene =
-new THREE.Scene();
+const container = document.getElementById("model-container");
 
-const camera =
-new THREE.PerspectiveCamera(
-35,
-container.clientWidth /
-container.clientHeight,
-0.1,
-100
+/* ------------------------
+   SCENE
+------------------------ */
+
+const scene = new THREE.Scene();
+
+/* ------------------------
+   CAMERA
+------------------------ */
+
+const camera = new THREE.PerspectiveCamera(
+    35,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    100
 );
 
-camera.position.z = 5;
+camera.position.set(0, 0, 5);
 
-const renderer =
-new THREE.WebGLRenderer({
-alpha:true,
-antialias:true
+/* ------------------------
+   RENDERER
+------------------------ */
+
+const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true
 });
 
-renderer.setPixelRatio(
-window.devicePixelRatio
-);
+renderer.setPixelRatio(window.devicePixelRatio);
 
 renderer.setSize(
-container.clientWidth,
-container.clientHeight
+    container.clientWidth,
+    container.clientHeight
 );
 
-container.appendChild(
-renderer.domElement
+container.appendChild(renderer.domElement);
+
+/* ------------------------
+   LIGHTING
+------------------------ */
+
+const ambientLight = new THREE.AmbientLight(
+    0xffffff,
+    2
 );
 
-/* Lights */
+scene.add(ambientLight);
 
-scene.add(
-new THREE.AmbientLight(
-0xffffff,
-2
-)
+const directionalLight = new THREE.DirectionalLight(
+    0xffffff,
+    2.5
 );
 
-const dir =
-new THREE.DirectionalLight(
-0xffffff,
-2.5
+directionalLight.position.set(
+    5,
+    5,
+    5
 );
 
-dir.position.set(
-5,
-5,
-5
+scene.add(directionalLight);
+
+/* ------------------------
+   DRACO
+------------------------ */
+
+const dracoLoader = new DRACOLoader();
+
+dracoLoader.setDecoderPath(
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
 );
 
-scene.add(dir);
+/* ------------------------
+   GLTF LOADER
+------------------------ */
 
-/* Draco */
-
-const draco =
-new DRACOLoader();
-
-draco.setDecoderPath(
-"https://www.gstatic.com/draco/v1/decoders/"
-);
-
-const loader =
-new GLTFLoader();
+const loader = new GLTFLoader();
 
 loader.setDRACOLoader(
-draco
+    dracoLoader
 );
+
+/* ------------------------
+   MODEL
+------------------------ */
 
 let model;
 
-/* Load Model */
-
 loader.load(
-"assets/Model.glb",
 
-(gltf)=>{
+    "assets/Model.glb",
 
-    model = gltf.scene;
+    (gltf) => {
 
-    scene.add(model);
+        model = gltf.scene;
 
-    const scale = 1.3;
+        scene.add(model);
 
-    model.scale.set(
-        scale,
-        scale,
-        scale
-    );
+        const scale = 1.3;
 
-    model.position.set(
-        0,
-        -1.2,
-        0
-    );
+        model.scale.set(
+            scale,
+            scale,
+            scale
+        );
 
-},
+        model.position.set(
+            0,
+            -1.2,
+            0
+        );
 
-undefined,
+        console.log("Model Loaded");
 
-(error)=>{
-    console.error(error);
-}
+    },
+
+    undefined,
+
+    (error) => {
+
+        console.error(
+            "Model Load Error:",
+            error
+        );
+
+    }
+
 );
 
-/* Hover Animation */
+/* ------------------------
+   ANIMATION
+------------------------ */
 
-function animate(){
+function animate() {
 
     requestAnimationFrame(
         animate
     );
 
-    if(model){
+    if (model) {
 
-    
         model.position.y =
-        -1.2 +
-        Math.sin(
-            Date.now()*0.0015
-        )*0.12;
+            -1.2 +
+            Math.sin(
+                Date.now() * 0.0015
+            ) * 0.12;
+
     }
 
     renderer.render(
@@ -143,32 +166,47 @@ function animate(){
 
 animate();
 
-/* Responsive */
+/* ------------------------
+   RESIZE
+------------------------ */
 
 window.addEventListener(
-"resize",
-()=>{
+    "resize",
+    () => {
 
-renderer.setSize(
-container.clientWidth,
-container.clientHeight
+        renderer.setSize(
+            container.clientWidth,
+            container.clientHeight
+        );
+
+        camera.aspect =
+            container.clientWidth /
+            container.clientHeight;
+
+        camera.updateProjectionMatrix();
+
+    }
 );
 
-camera.aspect =
-container.clientWidth/
-container.clientHeight;
+/* ------------------------
+   OPEN BUTTON
+------------------------ */
 
-camera.updateProjectionMatrix();
+const openButton =
+    document.getElementById(
+        "openButton"
+    );
 
-// OPEN BUTTON CLICK
+if (openButton) {
 
-document
-    .getElementById("openButton")
-    .addEventListener("click", () => {
+    openButton.addEventListener(
+        "click",
+        () => {
 
-        window.location.href = "map.html";
+            window.location.href =
+                "map.html";
 
-    });
+        }
+    );
 
-});
-
+}
