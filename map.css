@@ -6,42 +6,46 @@
 
 html,
 body{
-
     width:100%;
     height:100%;
-
     overflow:hidden;
-
     background:#000;
 }
 
-/* ------------------------
+/* =========================
    MAP CONTAINER
------------------------- */
+========================= */
 
 .map-container{
 
     position:relative;
 
-    width:100%;
+    width:100vw;
     height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
 }
+
+/* =========================
+   MAP IMAGE
+========================= */
 
 .map{
 
-    width:auto;
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
     height:95vh;
+    width:auto;
+
+    transform:translate(-50%,-50%);
 
     display:block;
 }
 
-/* ------------------------
+/* =========================
    HOTSPOTS
------------------------- */
+========================= */
 
 .spot{
 
@@ -49,29 +53,31 @@ body{
 
     border-radius:50%;
 
-    background:rgba(255,0,0,0.30);
+    background:rgba(255,0,0,0.35);
+
     border:2px solid red;
 
-    cursor:pointer;
-
     z-index:10;
+
+    cursor:pointer;
 }
 
-/* ------------------------
+/* =========================
    JULIEE TO JUHI
------------------------- */
-/* JULIEE */
+========================= */
 
 .juliee{
 
     width:110px;
     height:110px;
 
-    top:14%;
+    top:28%;
     left:35%;
 }
 
-/* GRASS */
+/* =========================
+   GRASS & GOSSIPS
+========================= */
 
 .grass{
 
@@ -82,7 +88,9 @@ body{
     left:65%;
 }
 
-/* TRANSIT */
+/* =========================
+   TRANSIT & TALKS
+========================= */
 
 .transit{
 
@@ -93,7 +101,9 @@ body{
     left:35%;
 }
 
-/* FLIGHT */
+/* =========================
+   FLABBERGASTED FLIGHT
+========================= */
 
 .flight{
 
@@ -104,7 +114,9 @@ body{
     left:58%;
 }
 
-/* NEXT PAGE */
+/* =========================
+   NEXT PAGE
+========================= */
 
 #nextBtn{
 
@@ -116,24 +128,35 @@ body{
     bottom:2%;
     right:2%;
 
-    background:rgba(0,255,0,.3);
+    background:rgba(0,255,0,0.35);
+
     border:2px solid lime;
 
-    cursor:pointer;
-
     z-index:20;
+
+    cursor:pointer;
 }
-/* ------------------------
-   PAGE FADE
------------------------- */
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.spot:hover{
+    background:rgba(255,255,255,0.5);
+}
+
+#nextBtn:hover{
+    background:rgba(0,255,0,0.6);
+}
+
+/* =========================
+   PAGE TRANSITION
+========================= */
 
 body{
-
     transition:opacity .5s ease;
 }
 
 body.fade{
-
     opacity:0;
 }
-
