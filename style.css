@@ -9,16 +9,25 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:black;
+    background:#000;
+    font-family:serif;
 }
 
-.poster{
+.cover{
     position:relative;
     width:100vw;
     height:100vh;
 }
 
-/* Full poster */
+body{
+    transition:opacity .6s ease;
+}
+
+body.fade{
+    opacity:0;
+}
+
+/* Poster */
 
 .background{
     position:absolute;
@@ -27,47 +36,53 @@ body{
     width:100%;
     height:100%;
 
-    object-fit:contain;
+    object-fit:cover;
+    object-position:center;
 
     z-index:1;
 }
 
-/* 3D model area */
+/* ThreeJS */
 
-#viewer{
+#model-container{
     position:absolute;
 
     left:50%;
-    top:50%;
+    top:54%;
 
-    width:280px;
-    height:340px;
+    width:65vw;
+    height:42vh;
 
     transform:translate(-50%,-50%);
 
-    z-index:10;
-
-    pointer-events:none;
+    z-index:5;
 }
 
-/* Invisible seal click area */
+/* Invisible Seal Button */
 
-.seal-button{
+#openButton{
     position:absolute;
 
+    width:150px;
+    height:150px;
+
     left:50%;
-    top:79%;
+    bottom:16%;
 
-    width:110px;
-    height:110px;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    z-index:20;
-
-    cursor:pointer;
+    transform:translateX(-50%);
 
     background:transparent;
+    border:none;
+
+    z-index:10;
+}
+/* Mobile Fine Tuning */
+
+@media (min-width:600px){
+
+    .cover{
+        max-width:430px;
+        margin:auto;
+    }
+
 }
