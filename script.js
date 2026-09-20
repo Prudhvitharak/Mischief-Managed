@@ -239,8 +239,13 @@ document
             password === "0.32"
         ){
 
-            window.location.href =
-            "map.html";
+            document
+            .getElementById("passwordModal")
+            .classList.remove("show");
+
+            document
+            .getElementById("questionModal")
+            .classList.add("show");";
 
         }
         else{
