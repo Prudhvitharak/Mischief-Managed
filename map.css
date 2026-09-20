@@ -62,72 +62,44 @@ body{
 ------------------------ */
 
 .juliee{
+    width:110px;
+    height:110px;
 
-    width:90px;
-    height:90px;
-
-    top:30%;
-    left:48%;
+    top:38%;
+    left:41%;
 }
 
 .grass{
+    width:110px;
+    height:110px;
 
-    width:90px;
-    height:90px;
-
-    top:47%;
+    top:55%;
     left:58%;
 }
 
 .transit{
+    width:110px;
+    height:110px;
 
-    width:90px;
-    height:90px;
-
-    top:61%;
-    left:39%;
+    top:67%;
+    left:38%;
 }
 
 .flight{
+    width:110px;
+    height:110px;
 
-    width:95px;
-    height:95px;
-
-    top:73%;
-    left:56%;
+    top:80%;
+    left:55%;
 }
-/* ------------------------
-   NEXT BUTTON
------------------------- */
+
 #nextBtn{
+    width:170px;
+    height:70px;
 
-    position:absolute;
-
-    width:180px;
-    height:80px;
-
-    bottom:8%;
-    right:15%;
-
-    background:rgba(0,255,0,.3);
-    border:2px solid lime;
-
-    cursor:pointer;
+    bottom:10%;
+    right:8%;
 }
-/* ------------------------
-   HOVER
------------------------- */
-
-.spot:hover{
-
-    background:rgba(255,255,255,0.4);
-}
-
-#nextBtn:hover{
-
-    background:rgba(0,255,0,0.5);
-}
-
 /* ------------------------
    PAGE FADE
 ------------------------ */
