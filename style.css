@@ -86,3 +86,123 @@ body.fade{
     }
 
 }
+.modal{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    backdrop-filter:blur(6px);
+
+    background:rgba(0,0,0,0.35);
+
+    z-index:100;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+
+    width:85%;
+    max-width:350px;
+
+    padding:28px;
+
+    border-radius:20px;
+
+    background:#f1dfbe;
+
+    border:2px solid #8d6e3c;
+
+    text-align:center;
+
+    box-shadow:0 0 25px rgba(0,0,0,.3);
+}
+
+.modal-card h2{
+
+    color:#4d2f12;
+    margin-bottom:20px;
+}
+
+.modal-card input{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #8d6e3c;
+
+    font-size:16px;
+
+    margin-bottom:15px;
+}
+
+.hint-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:10px;
+}
+
+#hintBtn{
+
+    width:28px;
+    height:28px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#8d6e3c;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+#hintText{
+
+    display:none;
+
+    font-size:14px;
+
+    color:#4d2f12;
+
+    margin-bottom:20px;
+
+    line-height:1.5;
+}
+
+#unlockBtn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#8d6e3c;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+}
