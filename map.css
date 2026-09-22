@@ -46,16 +46,6 @@ body{
 /* =========================
    HOTSPOTS
 ========================= */
-.spot{
-
-    position:absolute;
-
-    border-radius:50%;
-
-    z-index:10;
-
-    cursor:pointer;
-}
 
 
 /* =========================
@@ -121,21 +111,16 @@ body{
     width:170px;
     height:100px;
 
-    bottom:10%;
+    bottom:1%;
     right:1%;
 
-    z-index:20;
 
-    cursor:pointer;
 }
 
 /* =========================
    HOVER EFFECT
 ========================= */
 
-.spot:hover{
-    background:rgba(255,255,255,0.5);
-}
 
 #nextBtn:hover{
     background:rgba(0,255,0,0.6);
