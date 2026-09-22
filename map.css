@@ -52,10 +52,6 @@ body{
 
     border-radius:50%;
 
-    background:rgba(255,0,0,0.35);
-
-    border:2px solid red;
-
     z-index:10;
 
     cursor:pointer;
@@ -127,10 +123,6 @@ body{
 
     bottom:10%;
     right:1%;
-
-    background:rgba(0,255,0,0.35);
-
-    border:2px solid lime;
 
     z-index:20;
 
