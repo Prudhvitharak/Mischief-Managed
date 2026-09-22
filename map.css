@@ -103,9 +103,7 @@ body{
 /* =========================
    NEXT PAGE
 ========================= */
-
 #nextBtn{
-
     position:absolute;
 
     width:170px;
@@ -114,12 +112,15 @@ body{
     bottom:1%;
     right:1%;
 
+    background:transparent;
+    border:none;
 
+    color:transparent;
 }
 
 /* =========================
    HOVER EFFECT
-========================= *
+========================= */
 /* =========================
    PAGE TRANSITION
 ========================= */
