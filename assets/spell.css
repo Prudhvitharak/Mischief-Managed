@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+
+    background:url("assets/parchment-bg.jpg");
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Georgia, serif;
+
+    transition:opacity 1.5s ease;
+}
+
+body.fade{
+    opacity:0;
+}
+
+.parchment{
+
+    width:85%;
+
+    padding:35px;
+
+    background:rgba(248,236,210,.92);
+
+    border:3px solid #8a6b3f;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.3);
+}
+
+h1{
+
+    color:#4b2c13;
+
+    margin-bottom:15px;
+}
+
+p{
+
+    color:#5f3c1f;
+
+    line-height:1.5;
+}
+
+input{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #8a6b3f;
+
+    font-size:16px;
+}
+
+button{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#8a6b3f;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+}
+
+#error{
+
+    margin-top:12px;
+
+    color:crimson;
+
+    min-height:20px;
+}
