@@ -27,31 +27,7 @@
 
 <body>
 
-<!-- =========================================
-     SPELL SCREEN
-========================================= -->
-
-<div id="spellScreen">
-
-    <div class="spell-card">
-
-        <h1>Speak the Spell</h1>
-
-        <button id="micBtn">
-            🎤
-        </button>
-
-        <p id="spellStatus">
-            Tap the microphone
-        </p>
-
-    </div>
-
-</div>
-
-<!-- =========================================
-     PASSWORD MODAL
-========================================= -->
+<!-- PASSWORD MODAL -->
 
 <div id="passwordModal" class="modal">
 
@@ -74,13 +50,9 @@
         </div>
 
         <p id="hintText">
-
             What is the probability that we meet during ITP?
-
-            <br><br>
-
+            <br>
             (Don't worry... ask me on WhatsApp)
-
         </p>
 
         <button id="unlockBtn">
@@ -91,69 +63,37 @@
 
 </div>
 
-<!-- =========================================
-     QUESTION MODAL
-========================================= -->
+<!-- QUESTION MODAL -->
 
 <div id="questionModal" class="modal">
 
     <div class="modal-card">
 
-        <h2>
-            A little curiosity before we begin...
-        </h2>
+        <h2>A little curiosity before we begin...</h2>
 
         <p>
-            Which of our first conversations
-            do you like the best?
+            Which of our first conversations do you like the best?
         </p>
 
         <div class="option">
-
-            <input
-                type="radio"
-                name="memory"
-                id="opt1"
-                value="steps"
-            >
-
+            <input type="radio" name="memory" id="opt1" value="steps">
             <label for="opt1">
-                Near the steps of
-                Shanthikithan Mall
+                Near the steps of Shanthikithan Mall
             </label>
-
         </div>
 
         <div class="option">
-
-            <input
-                type="radio"
-                name="memory"
-                id="opt2"
-                value="sheraton"
-            >
-
+            <input type="radio" name="memory" id="opt2" value="sheraton">
             <label for="opt2">
-                During the Sheraton night
-                when we skipped dinner
-                with Kedar & Co.
+                During the Sheraton night when we skipped dinner with Kedar & Co.
             </label>
-
         </div>
 
         <div class="option">
-
-            <input
-                type="radio"
-                name="memory"
-                id="opt3"
-                value="surat"
-            >
-
+            <input type="radio" name="memory" id="opt3" value="surat">
             <label for="opt3">
                 Surat hotel grass time
             </label>
-
         </div>
 
         <button id="continueBtn">
@@ -164,9 +104,7 @@
 
 </div>
 
-<!-- =========================================
-     KEDAR MODAL
-========================================= -->
+<!-- KEDAR MODAL -->
 
 <div id="kedarModal" class="modal">
 
@@ -175,13 +113,11 @@
         <h1>😜</h1>
 
         <p>
-            Thanks to Kedar for not inviting
-            us to dinner that day.
+            Thanks to Kedar for not inviting us to dinner that day.
         </p>
 
         <p>
-            Some stories start
-            in unexpected ways.
+            Some stories start in unexpected ways.
         </p>
 
         <button id="openMapBtn">
@@ -192,9 +128,7 @@
 
 </div>
 
-<!-- =========================================
-     MAIN PAGE
-========================================= -->
+<!-- MAIN PAGE -->
 
 <div class="cover">
 
@@ -204,105 +138,13 @@
         alt=""
     >
 
-    <!-- THREE JS MODEL -->
-
     <div id="model-container"></div>
-
-    <!-- INVISIBLE WAX SEAL BUTTON -->
 
     <button id="openButton"></button>
 
 </div>
 
-<script>
-
-const micBtn =
-document.getElementById("micBtn");
-
-const spellStatus =
-document.getElementById("spellStatus");
-
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-if(SpeechRecognition){
-
-    const recognition =
-    new SpeechRecognition();
-
-    recognition.lang = "en-US";
-
-    recognition.interimResults = false;
-
-    recognition.continuous = false;
-
-    micBtn.addEventListener(
-
-        "click",
-
-        ()=>{
-
-            spellStatus.innerText =
-            "Listening...";
-
-            recognition.start();
-
-        }
-    );
-
-    recognition.onresult = (event)=>{
-
-        const spell =
-        event.results[0][0]
-        .transcript
-        .toLowerCase();
-
-        console.log(spell);
-
-        if(
-            spell.includes(
-                "mischief managed"
-            )
-        ){
-
-            spellStatus.innerText =
-            "Spell Accepted ✨";
-
-            document
-            .getElementById(
-                "spellScreen"
-            )
-            .classList.add(
-                "fade"
-            );
-
-            setTimeout(()=>{
-
-                document
-                .getElementById(
-                    "spellScreen"
-                )
-                .remove();
-
-            },2000);
-
-        }
-        else{
-
-            spellStatus.innerText =
-            "Wrong Spell. Try Again.";
-
-        }
-    };
-}
-
-</script>
-
-<script
-    type="module"
-    src="script.js">
-</script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
