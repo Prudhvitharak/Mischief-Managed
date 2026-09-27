@@ -1,167 +1,64 @@
 import * as THREE from "three";
 
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
-/* =====================================
-   SPELL SCREEN
-===================================== */
+/* ------------------------
+   CONTAINER
+------------------------ */
 
-const micBtn =
-document.getElementById("micBtn");
+const container = document.getElementById("model-container");
 
-const spellStatus =
-document.getElementById("spellStatus");
+/* ------------------------
+   SCENE
+------------------------ */
 
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
+const scene = new THREE.Scene();
 
-if (SpeechRecognition) {
+/* ------------------------
+   CAMERA
+------------------------ */
 
-    const recognition =
-    new SpeechRecognition();
-
-    recognition.lang = "en-US";
-
-    recognition.interimResults = false;
-
-    recognition.continuous = false;
-
-    micBtn.addEventListener(
-        "click",
-        () => {
-
-            spellStatus.innerText =
-            "Listening...";
-
-            recognition.start();
-        }
-    );
-
-    recognition.onresult = (event) => {
-
-        const spell =
-        event.results[0][0]
-        .transcript
-        .toLowerCase();
-
-        console.log(spell);
-
-        if (
-            spell.includes("mischief managed")
-        ) {
-
-            spellStatus.innerText =
-            "Spell Accepted ✨";
-
-            revealSite();
-
-        } else {
-
-            spellStatus.innerText =
-            "Wrong Spell. Try Again.";
-        }
-    };
-
-    recognition.onerror = () => {
-
-        spellStatus.innerText =
-        "Microphone Error";
-    };
-}
-
-function revealSite() {
-
-    const spellScreen =
-    document.getElementById(
-        "spellScreen"
-    );
-
-    spellScreen.classList.add(
-        "fade"
-    );
-
-    document
-    .querySelector(".cover")
-    .classList.add("show");
-
-    setTimeout(() => {
-
-        spellScreen.remove();
-
-    }, 2000);
-}
-
-/* =====================================
-   THREE JS
-===================================== */
-
-const container =
-document.getElementById(
-    "model-container"
-);
-
-const scene =
-new THREE.Scene();
-
-/* CAMERA */
-
-const camera =
-new THREE.PerspectiveCamera(
+const camera = new THREE.PerspectiveCamera(
     35,
-    container.clientWidth /
-    container.clientHeight,
+    container.clientWidth / container.clientHeight,
     0.1,
     100
 );
 
-camera.position.set(
-    0,
-    0,
-    5
-);
+camera.position.set(0, 0, 5);
 
-/* RENDERER */
+/* ------------------------
+   RENDERER
+------------------------ */
 
-const renderer =
-new THREE.WebGLRenderer({
-
+const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: true
-
 });
 
-renderer.setPixelRatio(
-    Math.min(
-        window.devicePixelRatio,
-        2
-    )
-);
+renderer.setPixelRatio(window.devicePixelRatio);
 
 renderer.setSize(
     container.clientWidth,
     container.clientHeight
 );
 
-container.appendChild(
-    renderer.domElement
-);
+container.appendChild(renderer.domElement);
 
-/* LIGHTS */
+/* ------------------------
+   LIGHTING
+------------------------ */
 
-const ambientLight =
-new THREE.AmbientLight(
+const ambientLight = new THREE.AmbientLight(
     0xffffff,
     2
 );
 
-scene.add(
-    ambientLight
-);
+scene.add(ambientLight);
 
-const directionalLight =
-new THREE.DirectionalLight(
+const directionalLight = new THREE.DirectionalLight(
     0xffffff,
     2.5
 );
@@ -172,29 +69,31 @@ directionalLight.position.set(
     5
 );
 
-scene.add(
-    directionalLight
-);
+scene.add(directionalLight);
 
-/* DRACO */
+/* ------------------------
+   DRACO
+------------------------ */
 
-const dracoLoader =
-new DRACOLoader();
+const dracoLoader = new DRACOLoader();
 
 dracoLoader.setDecoderPath(
     "https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
 );
 
-/* GLTF */
+/* ------------------------
+   GLTF LOADER
+------------------------ */
 
-const loader =
-new GLTFLoader();
+const loader = new GLTFLoader();
 
 loader.setDRACOLoader(
     dracoLoader
 );
 
-/* MODEL */
+/* ------------------------
+   MODEL
+------------------------ */
 
 let model;
 
@@ -204,8 +103,7 @@ loader.load(
 
     (gltf) => {
 
-        model =
-        gltf.scene;
+        model = gltf.scene;
 
         scene.add(model);
 
@@ -223,9 +121,8 @@ loader.load(
             0
         );
 
-        console.log(
-            "Model Loaded"
-        );
+        console.log("Model Loaded");
+
     },
 
     undefined,
@@ -236,10 +133,14 @@ loader.load(
             "Model Load Error:",
             error
         );
+
     }
+
 );
 
-/* ANIMATION */
+/* ------------------------
+   ANIMATION
+------------------------ */
 
 function animate() {
 
@@ -249,13 +150,12 @@ function animate() {
 
     if (model) {
 
-        model.rotation.y += 0.003;
-
         model.position.y =
             -0.5 +
             Math.sin(
                 Date.now() * 0.0015
             ) * 0.12;
+
     }
 
     renderer.render(
@@ -266,7 +166,9 @@ function animate() {
 
 animate();
 
-/* RESIZE */
+/* ------------------------
+   RESIZE
+------------------------ */
 
 window.addEventListener(
     "resize",
@@ -282,46 +184,33 @@ window.addEventListener(
             container.clientHeight;
 
         camera.updateProjectionMatrix();
+
     }
 );
 
-/* =====================================
-   WAX SEAL BUTTON
-===================================== */
-
+/* ------------------------
+   OPEN BUTTON
+------------------------ */
 const openButton =
-document.getElementById(
-    "openButton"
-);
+document.getElementById("openButton");
 
-const passwordModal =
-document.getElementById(
-    "passwordModal"
-);
+const modal =
+document.getElementById("passwordModal");
 
 openButton.addEventListener(
     "click",
     () => {
 
-        passwordModal.classList.add(
-            "show"
-        );
+        modal.classList.add("show");
+
     }
 );
 
-/* =====================================
-   HINT
-===================================== */
-
 const hintBtn =
-document.getElementById(
-    "hintBtn"
-);
+document.getElementById("hintBtn");
 
 const hintText =
-document.getElementById(
-    "hintText"
-);
+document.getElementById("hintText");
 
 hintBtn.addEventListener(
     "click",
@@ -331,66 +220,47 @@ hintBtn.addEventListener(
         hintText.style.display === "block"
         ? "none"
         : "block";
+
     }
 );
 
-/* =====================================
-   PASSWORD CHECK
-===================================== */
-
 document
-.getElementById(
-    "unlockBtn"
-)
+.getElementById("unlockBtn")
 .addEventListener(
     "click",
     () => {
 
         const password =
         document
-        .getElementById(
-            "passwordInput"
-        )
-        .value
-        .trim();
+        .getElementById("passwordInput")
+        .value;
 
-        if (
+        if(
             password === "0.32"
-        ) {
+        ){
 
             document
-            .getElementById(
-                "passwordModal"
-            )
-            .classList.remove(
-                "show"
-            );
+            .getElementById("passwordModal")
+            .classList.remove("show");
 
             document
-            .getElementById(
-                "questionModal"
-            )
-            .classList.add(
-                "show"
-            );
+            .getElementById("questionModal")
+            .classList.add("show");
 
-        } else {
+        }
+        else{
 
             alert(
                 "Mischief Managed... Incorrect Password."
             );
         }
+
     }
 );
 
-/* =====================================
-   MEMORY QUESTION
-===================================== */
 
 document
-.getElementById(
-    "continueBtn"
-)
+.getElementById("continueBtn")
 .addEventListener(
     "click",
     () => {
@@ -400,7 +270,7 @@ document
             'input[name="memory"]:checked'
         );
 
-        if (!selected) {
+        if(!selected){
 
             alert(
                 "Choose one memory first 😊"
@@ -410,44 +280,24 @@ document
         }
 
         document
-        .getElementById(
-            "questionModal"
-        )
-        .classList.remove(
-            "show"
-        );
+        .getElementById("questionModal")
+        .classList.remove("show");
 
         document
-        .getElementById(
-            "kedarModal"
-        )
-        .classList.add(
-            "show"
-        );
+        .getElementById("kedarModal")
+        .classList.add("show");
+
     }
 );
 
-/* =====================================
-   OPEN MAP
-===================================== */
-
 document
-.getElementById(
-    "openMapBtn"
-)
+.getElementById("openMapBtn")
 .addEventListener(
     "click",
     () => {
 
-        document.body.classList.add(
-            "fade"
-        );
+        window.location.href =
+        "map1.html";
 
-        setTimeout(() => {
-
-            window.location.href =
-            "map1.html";
-
-        }, 600);
     }
 );
