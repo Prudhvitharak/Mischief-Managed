@@ -19,7 +19,7 @@ unlockBtn.addEventListener(
             setTimeout(()=>{
 
                 window.location.href =
-                "index.html";
+                "main.html";
 
             },1500);
 
