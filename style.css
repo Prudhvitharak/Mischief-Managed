@@ -28,142 +28,16 @@ body.fade{
 }
 
 /* ------------------------
-   SPELL SCREEN
------------------------- */
-
-#spellScreen{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-    radial-gradient(
-        circle,
-        #1b1208 0%,
-        #000 75%
-    );
-
-    z-index:999999;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    transition:
-    opacity 2s ease,
-    visibility 2s ease;
-}
-
-#spellScreen.fade{
-
-    opacity:0;
-
-    visibility:hidden;
-}
-
-.spell-card{
-
-    text-align:center;
-
-    padding:30px;
-
-    color:#d4af37;
-}
-
-.spell-card h1{
-
-    font-size:34px;
-
-    margin-bottom:25px;
-
-    letter-spacing:2px;
-
-    text-shadow:
-        0 0 12px rgba(212,175,55,.5);
-}
-
-#spellStatus{
-
-    margin-top:20px;
-
-    color:#f1dfbe;
-
-    font-size:16px;
-}
-
-#micBtn{
-
-    width:90px;
-    height:90px;
-
-    border:none;
-
-    border-radius:50%;
-
-    cursor:pointer;
-
-    font-size:40px;
-
-    color:white;
-
-    background:
-    radial-gradient(
-        circle,
-        #d4af37,
-        #8d6e3c
-    );
-
-    box-shadow:
-        0 0 25px rgba(212,175,55,.7);
-
-    animation:
-        pulse 2s infinite;
-}
-
-@keyframes pulse{
-
-    0%{
-        transform:scale(1);
-        box-shadow:
-        0 0 12px rgba(212,175,55,.5);
-    }
-
-    50%{
-        transform:scale(1.08);
-        box-shadow:
-        0 0 30px rgba(212,175,55,.9);
-    }
-
-    100%{
-        transform:scale(1);
-        box-shadow:
-        0 0 12px rgba(212,175,55,.5);
-    }
-}
-
-/* ------------------------
    COVER PAGE
 ------------------------ */
 
 .cover{
-
     position:relative;
 
     width:100vw;
     height:100vh;
 
     overflow:hidden;
-
-    opacity:0;
-
-    transition:
-        opacity 3s ease;
-}
-
-.cover.show{
-    opacity:1;
 }
 
 /* ------------------------
@@ -171,7 +45,6 @@ body.fade{
 ------------------------ */
 
 .background{
-
     position:absolute;
 
     inset:0;
@@ -180,7 +53,6 @@ body.fade{
     height:100%;
 
     object-fit:cover;
-
     object-position:center;
 
     z-index:1;
@@ -200,8 +72,7 @@ body.fade{
     width:70vw;
     height:45vh;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     z-index:5;
 
@@ -222,13 +93,10 @@ body.fade{
     left:50%;
     bottom:16%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     background:transparent;
-
     border:none;
-
     outline:none;
 
     cursor:pointer;
@@ -255,11 +123,9 @@ body.fade{
     justify-content:center;
     align-items:center;
 
-    background:
-        rgba(0,0,0,.45);
+    background:rgba(0,0,0,0.45);
 
-    backdrop-filter:
-        blur(6px);
+    backdrop-filter:blur(6px);
 
     z-index:9999;
 }
@@ -275,7 +141,6 @@ body.fade{
 .modal-card{
 
     width:85%;
-
     max-width:360px;
 
     padding:28px;
@@ -398,6 +263,7 @@ body.fade{
 }
 
 .option input{
+
     margin-top:3px;
 }
 
@@ -445,40 +311,11 @@ body.fade{
 #continueBtn:hover,
 #openMapBtn:hover{
 
-    transform:
-        translateY(-2px);
+    transform:translateY(-2px);
 }
 
 /* ------------------------
-   MOBILE
------------------------- */
-
-@media (max-width:600px){
-
-    #model-container{
-
-        width:72vw;
-        height:46vh;
-
-        top:47%;
-    }
-
-    #openButton{
-
-        width:140px;
-        height:140px;
-
-        bottom:16%;
-    }
-
-    .spell-card h1{
-
-        font-size:28px;
-    }
-}
-
-/* ------------------------
-   DESKTOP LIMIT
+   MOBILE LIMIT
 ------------------------ */
 
 @media (min-width:600px){
