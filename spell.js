@@ -10,7 +10,7 @@ unlockBtn.addEventListener(
         .value
         .trim();
 
-        if(password === "0.32"){
+        if(password === "Mischief Managed"){
 
             document.body.classList.add(
                 "fade"
