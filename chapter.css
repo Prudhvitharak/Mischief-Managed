@@ -1,1 +1,206 @@
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 18px 12px;
+  min-height: 100vh;
+  color: #422719;
+  background:
+    radial-gradient(ellipse at 20% 15%, #f8e6bd 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 85%, #c49a60 0%, transparent 40%),
+    #765033;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.diary-page {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  min-height: 95vh;
+  margin: 0 auto;
+  padding: 24px 22px;
+  overflow: hidden;
+  border: 1px solid #b58b53;
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse at 10% 10%, #fff0cf 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 90%, #dfbd83 0%, transparent 50%),
+    #f1d9a7;
+  box-shadow:
+    0 8px 25px #24160b88,
+    inset 0 0 30px #9b6b3540;
+}
+
+.diary-page::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #a77c4b88;
+  pointer-events: none;
+}
+
+.top-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.top-bar a,
+.return-link {
+  color: #65401f;
+  text-decoration: none;
+}
+
+.top-bar a {
+  font-size: 13px;
+}
+
+.chapter-header {
+  text-align: center;
+  padding: 38px 0 18px;
+}
+
+.chapter-number {
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin: 0 0 12px;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(34px, 8vw, 54px);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.15;
+}
+
+.divider {
+  margin: 18px 0;
+  color: #8a5a2d;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.subtitle {
+  max-width: 380px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.story {
+  position: relative;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.story p {
+  margin: 18px 0 24px;
+}
+
+.dropcap::first-letter {
+  float: left;
+  padding: 4px 7px 0 0;
+  font-size: 52px;
+  line-height: 0.9;
+  color: #70451f;
+}
+
+.memory-photo {
+  width: 100%;
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 10px 10px 15px;
+  background: #f9e9c9;
+  border: 1px solid #c9a778;
+  box-shadow: 2px 5px 9px #5a381d44;
+  transform: rotate(-1deg);
+}
+
+.photo-placeholder {
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #806441;
+  background:
+    linear-gradient(135deg, #dfc18b, #f5e4bd, #c6a16b);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.memory-photo figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.handwritten-note {
+  width: fit-content;
+  max-width: 90%;
+  margin: 30px auto;
+  padding: 15px 20px;
+  color: #67452d;
+  background: #e6c58e;
+  box-shadow: 2px 4px 7px #5a381d30;
+  font-size: 19px;
+  font-style: italic;
+  text-align: center;
+  transform: rotate(2deg);
+}
+
+.diary-footer {
+  padding: 15px 0 10px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.return-link {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 10px 16px;
+  border: 1px solid #a77c4b;
+  border-radius: 3px;
+  font-style: normal;
+}
+
+.return-link:hover {
+  background: #dfc18b;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 8px 5px;
+  }
+
+  .diary-page {
+    padding: 20px 18px;
+  }
+
+  .chapter-header {
+    padding-top: 32px;
+  }
+
+  .story {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .photo-placeholder {
+    min-height: 160px;
+  }
+}
+
