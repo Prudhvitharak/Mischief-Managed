@@ -14,8 +14,7 @@
             box-sizing: border-box;
         }
 
-        html,
-        body {
+        html, body {
             width: 100%;
             min-height: 100%;
             background: #21150e;
@@ -26,7 +25,6 @@
             min-height: 100vh;
             min-height: 100dvh;
             overflow-x: hidden;
-            transition: opacity 0.4s ease;
         }
 
         /* POSTER */
@@ -50,82 +48,91 @@
             object-position: top center;
         }
 
-        /* FLOATING COMING-SOON BAR */
+        /* CENTERED FLOATING BUTTON */
         .coming-soon {
             position: fixed;
             z-index: 10;
+            top: 50%;
             left: 50%;
-            bottom: 35px;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
 
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
 
             width: max-content;
             max-width: 90%;
-            padding: 12px 17px;
+            padding: 16px 22px;
 
             color: #fff0d0;
-            background: rgba(43, 25, 14, 0.68);
-            border: 1px solid rgba(230, 193, 130, 0.65);
-            border-radius: 12px;
+            text-decoration: none;
+            text-align: left;
 
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
+            background: rgba(43, 25, 14, 0.72);
+            border: 1px solid rgba(230, 193, 130, 0.8);
+            border-radius: 14px;
 
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.4);
 
             animation: float 3s ease-in-out infinite;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .broom {
-            font-size: 27px;
+            font-size: 30px;
             line-height: 1;
         }
 
-        .coming-soon strong {
+        .button-text strong {
             display: block;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: normal;
             line-height: 1.4;
         }
 
-        .coming-soon p {
-            margin-top: 4px;
+        .button-text small {
+            display: block;
+            margin-top: 5px;
             font-size: 12px;
             font-style: italic;
             opacity: 0.85;
         }
 
+        .coming-soon:active {
+            background: rgba(75, 43, 22, 0.92);
+        }
+
         @keyframes float {
             0%, 100% {
-                transform: translate(-50%, 0);
+                translate: 0 0;
             }
 
             50% {
-                transform: translate(-50%, -5px);
+                translate: 0 -5px;
             }
         }
 
         @media (max-width: 480px) {
             .coming-soon {
-                bottom: 28px;
-                padding: 10px 13px;
-                gap: 9px;
+                padding: 14px 17px;
+                gap: 10px;
                 max-width: 92%;
             }
 
-            .coming-soon strong {
-                font-size: 12px;
-            }
-
-            .coming-soon p {
-                font-size: 11px;
-            }
-
             .broom {
-                font-size: 24px;
+                font-size: 26px;
+            }
+
+            .button-text strong {
+                font-size: 14px;
+            }
+
+            .button-text small {
+                font-size: 11px;
             }
         }
     </style>
@@ -134,24 +141,22 @@
 <body>
 
     <main class="map-container">
-
-        <!-- Change this filename if your poster has a different name -->
         <img
             src="assets/Map2.png"
             class="map-poster"
             alt="The next chapter of our memory map"
         >
-
     </main>
 
-    <div class="coming-soon">
+    <!-- Tap this floating button to return to Map I -->
+    <a href="map1.html" class="coming-soon">
         <span class="broom">🧹</span>
 
-        <div>
-            <strong>Memories collection in progress</strong>
-            <p>Will be added soon ✨</p>
-        </div>
-    </div>
+        <span class="button-text">
+            <strong>Return to Map I</strong>
+            <small>More memories await ✨</small>
+        </span>
+    </a>
 
 </body>
 </html>
