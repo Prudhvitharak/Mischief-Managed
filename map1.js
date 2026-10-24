@@ -1,63 +1,35 @@
 
-const memories = {
-    juliee: {
-        title: "Juliee to Juhi",
-        text: "Your first memory goes here..."
-    },
-
-    grass: {
-        title: "Grass and Gossips",
-        text: "Your second memory goes here..."
-    },
-
-    transit: {
-        title: "Transit and Talks",
-        text: "Your third memory goes here..."
-    },
-
-    flight: {
-        title: "Flabbergasted Flight",
-        text: "Your fourth memory goes here..."
-    }
+const chapterLinks = {
+    juliee: "chapter1.html",
+    grass: "chapter2.html",
+    transit: "chapter3.html",
+    flight: "chapter4.html"
 };
 
-// Open a memory when a map location is tapped
+// Open the relevant diary page when a map spot is tapped
 document.querySelectorAll(".spot").forEach(spot => {
-    spot.addEventListener("click", () => {
-        const memory = memories[spot.dataset.memory];
+    spot.addEventListener("click", event => {
+        event.preventDefault();
 
-        if (!memory) return;
+        const chapter = [...spot.classList]
+            .map(name => chapterLinks[name])
+            .find(Boolean);
 
-        document.getElementById("memoryTitle").textContent =
-            memory.title;
+        if (!chapter) return;
 
-        document.getElementById("memoryText").textContent =
-            memory.text;
+        document.body.style.opacity = "0";
 
-        document.getElementById("memoryModal").classList.remove("hidden");
+        setTimeout(() => {
+            window.location.href = chapter;
+        }, 300);
     });
 });
 
-// Close the memory popup
-function closeMemory() {
-    document.getElementById("memoryModal").classList.add("hidden");
-}
-
-document.getElementById("closeBtn").addEventListener("click", closeMemory);
-document.getElementById("backBtn").addEventListener("click", closeMemory);
-
-// Close popup when tapping outside the diary
-document.getElementById("memoryModal").addEventListener("click", event => {
-    if (event.target.id === "memoryModal") {
-        closeMemory();
-    }
-});
-
-// Keep your existing Next button functionality
+// Keep the Next button working
 document.getElementById("nextBtn").addEventListener("click", () => {
     document.body.style.opacity = "0";
 
     setTimeout(() => {
         window.location.href = "map2.html";
-    }, 500);
+    }, 300);
 });
