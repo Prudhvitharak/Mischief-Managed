@@ -1,78 +1,86 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta charset="UTF-8">
+    <title>Mischief Managed</title>
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>Mischief Managed</title>
-
-<link rel="stylesheet" href="spell.css">
-
+    <link rel="stylesheet" href="spell.css">
 </head>
 
 <body>
 
-<div class="overlay">
+    <!-- PASSWORD AND SPELL PAGE -->
+    <div class="overlay">
 
-    <div class="parchment">
+        <div class="parchment">
 
-        <p class="intro">
+            <p class="intro">
+                To reveal the hidden memories,
+                speak the spell or enter the password.
+            </p>
 
-            To reveal the hidden memories,
-            speak the spell or enter the password.
+            <!-- MICROPHONE BUTTON -->
+            <button id="micBtn" type="button">
+                🎤 Speak The Spell
+            </button>
 
-        </p>
+            <p id="spellStatus">
+                Tap the microphone and say the spell
+            </p>
 
-        <!-- MIC BUTTON -->
+            <!-- DIVIDER -->
+            <div class="divider">
+                — OR —
+            </div>
 
-        <button id="micBtn">
+            <!-- PASSWORD -->
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                autocomplete="off"
+            >
 
-            🎤 Speak The Spell
+            <button id="unlockBtn" type="button">
+                Reveal Memories
+            </button>
 
-        </button>
-
-        <p id="spellStatus">
-
-            Tap the microphone and say  the spell
-
-        </p>
-
-        <!-- DIVIDER -->
-
-        <div class="divider">
-
-            — OR —
+            <p id="error"></p>
 
         </div>
 
-        <!-- PASSWORD -->
+    </div>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Enter Password"
-        >
+    <!-- MAGICAL LOADING SCREEN -->
+    <div id="loadingScreen" class="loading-screen">
 
-        <button id="unlockBtn">
+        <div class="loading-content">
 
-            Reveal Memories
+            <div class="magic-symbol">✦</div>
 
-        </button>
+            <h1>Mischief Managed</h1>
 
-        <p id="error"></p>
+            <p id="loadingMessage">
+                Unfolding your memories...
+            </p>
+
+            <div class="loading-line">
+                <span></span>
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-
-<script src="spell.js"></script>
+    <!-- YOUR EXISTING JAVASCRIPT -->
+    <script src="spell.js"></script>
 
 </body>
-
 </html>
