@@ -236,7 +236,7 @@ document
         .value;
 
         if(
-            password === "0.32"
+            password === "0.322"
         ){
 
             document
