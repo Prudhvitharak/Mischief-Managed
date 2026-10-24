@@ -1,47 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>Map 1</title>
-
-<link rel="stylesheet" href="map.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mischief Managed — Map I</title>
+    <link rel="stylesheet" href="map.css">
 </head>
-
 <body>
 
 <div class="map-container">
 
-    <img
-        src="assets/Map1.png"
-        class="map"
-        alt=""
-    >
+    <img src="assets/Map1.png" class="map" alt="Our memory map">
 
-    <a href="#" class="spot juliee"></a>
+    <button class="spot juliee" data-memory="juliee"
+        aria-label="Juliee to Juhi"></button>
 
-    <a href="#" class="spot grass"></a>
+    <button class="spot grass" data-memory="grass"
+        aria-label="Grass and Gossips"></button>
 
-    <a href="#" class="spot transit"></a>
+    <button class="spot transit" data-memory="transit"
+        aria-label="Transit and Talks"></button>
 
-    <a href="#" class="spot flight"></a>
-
-    <button id="nextBtn"></button>
-
-
+    <button class="spot flight" data-memory="flight"
+        aria-label="Flabbergasted Flight"></button>
 
 </div>
 
+<!-- Memory popup -->
+<div id="memoryModal" class="modal hidden">
+    <div class="memory-card">
+        <button id="closeBtn" class="close-btn"
+            aria-label="Close memory">&times;</button>
+
+        <p class="eyebrow">A MEMORY FROM OUR MAP</p>
+        <h2 id="memoryTitle"></h2>
+        <div class="ornament">✦ ❧ ✦</div>
+        <p id="memoryText"></p>
+
+        <button id="backBtn" class="back-btn">Return to the map</button>
+    </div>
+</div>
+
 <script src="map1.js"></script>
-
 </body>
-
 </html>
