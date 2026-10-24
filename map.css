@@ -1,134 +1,180 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#000;
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    font-family: Georgia, serif;
 }
 
-/* =========================
-   MAP CONTAINER
-========================= */
-
-.map-container{
-
-    position:relative;
-
-    width:100vw;
-    height:100vh;
+/* MAP */
+.map-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* =========================
-   MAP IMAGE
-========================= */
-
-.map{
-
-    position:absolute;
-
-    top:50%;
-    left:50%;
-
-    height:95vh;
-    width:auto;
-
-    transform:translate(-50%,-50%);
-
-    display:block;
+.map {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 95vh;
+    width: auto;
+    max-width: none;
+    transform: translate(-50%, -50%);
+    display: block;
 }
 
-/* =========================
-   HOTSPOTS
-========================= */
-
-
-/* =========================
-   JULIEE TO JUHI
-========================= */
-
-.juliee{
-
-    width:110px;
-    height:110px;
-
-    top:24%;
-    left:30%;
+/* INVISIBLE CLICKABLE LOCATIONS */
+.spot {
+    position: absolute;
+    display: block;
+    width: 110px;
+    height: 110px;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* =========================
-   GRASS & GOSSIPS
-========================= */
-
-.grass{
-
-    width:110px;
-    height:110px;
-
-    top:35%;
-    left:65%;
+.juliee {
+    top: 24%;
+    left: 30%;
 }
 
-/* =========================
-   TRANSIT & TALKS
-========================= */
-
-.transit{
-
-    width:110px;
-    height:110px;
-
-    top:50%;
-    left:30%;
+.grass {
+    top: 35%;
+    left: 65%;
 }
 
-/* =========================
-   FLABBERGASTED FLIGHT
-========================= */
-
-.flight{
-
-    width:110px;
-    height:110px;
-
-    top:64%;
-    left:58%;
+.transit {
+    top: 50%;
+    left: 30%;
 }
 
-/* =========================
-   NEXT PAGE
-========================= */
-#nextBtn{
-    position:absolute;
-
-    width:170px;
-    height:100px;
-
-    bottom:1%;
-    right:1%;
-
-    background:transparent;
-    border:none;
-
-    color:transparent;
+.flight {
+    top: 64%;
+    left: 58%;
 }
 
-/* =========================
-   HOVER EFFECT
-========================= */
-/* =========================
-   PAGE TRANSITION
-========================= */
-
-body{
-    transition:opacity .5s ease;
+/* MEMORY POPUP BACKGROUND */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(20, 12, 6, 0.75);
 }
 
-body.fade{
-    opacity:0;
+.hidden {
+    display: none !important;
+}
+
+/* DIARY PAGE */
+.memory-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 35px 25px;
+    text-align: center;
+    color: #382317;
+    line-height: 1.7;
+    background:
+        radial-gradient(ellipse, #fff4d8, #e5c995);
+    border: 2px solid #9b7748;
+    box-shadow: 0 10px 40px #0008;
+    animation: appear 0.3s ease;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #88623d;
+}
+
+.memory-card h2 {
+    font-size: 26px;
+    margin: 18px 0;
+}
+
+.ornament {
+    color: #986c35;
+    margin: 12px;
+}
+
+#memoryText {
+    font-size: 17px;
+    text-align: left;
+    white-space: pre-line;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    color: #54351f;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.back-btn {
+    margin-top: 22px;
+    padding: 12px 18px;
+    border: 1px solid #75441f;
+    background: #6f2a20;
+    color: #fff1d4;
+    font-family: Georgia, serif;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PAGE TRANSITION */
+body {
+    transition: opacity 0.5s ease;
+}
+
+body.fade {
+    opacity: 0;
+}
+
+/* SMALL SCREENS */
+@media (max-width: 480px) {
+    .spot {
+        width: 75px;
+        height: 75px;
+    }
+
+    .memory-card {
+        padding: 35px 20px 25px;
+    }
+
+    .memory-card h2 {
+        font-size: 23px;
+    }
 }
