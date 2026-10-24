@@ -257,3 +257,23 @@ h1 {
   line-height: 1.5;
 }
 
+
+.memory-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  border: 1px solid #c9a778;
+  background: #2b1c12;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.memory-video {
+  position: relative;
+  padding: 10px 10px 15px;
+  background: #f9e9c9;
+  box-shadow: 2px 5px 12px #5a381d44;
+}
+
+
