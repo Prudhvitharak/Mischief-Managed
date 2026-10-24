@@ -41,7 +41,7 @@ function revealSite() {
     // Navigate after the animation
     setTimeout(() => {
 
-        window.location.href = "map1.html";
+        window.location.href = "index.html";
 
     }, 2500);
 }
