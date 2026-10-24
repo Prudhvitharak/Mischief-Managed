@@ -1,226 +1,452 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+/* ===================================
+   GLOBAL RESET
+=================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-
-    font-family:Georgia, serif;
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    font-family: Georgia, serif;
 }
 
 /* ===================================
    BACKGROUND
 =================================== */
 
-body{
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
 
-    background:
-    url("assets/parchment-bg.jpg");
+    background: url("assets/parchment-bg.jpg") center / cover no-repeat;
 
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    transition:opacity 1.5s ease;
+    opacity: 1;
+    transition: opacity 1s ease;
 }
 
-body.fade{
-    opacity:0;
+body.fade {
+    opacity: 0;
 }
 
 /* ===================================
-   OVERLAY
+   MAIN OVERLAY
 =================================== */
 
-.overlay{
+.overlay {
+    position: relative;
+    z-index: 1;
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    padding:25px;
+    padding: 25px;
+
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+/* Fade the parchment away */
+body.leaving .overlay {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ===================================
    PARCHMENT CARD
 =================================== */
 
-.parchment{
+.parchment {
+    width: 100%;
+    max-width: 380px;
 
-    width:100%;
-    max-width:380px;
+    padding: 30px;
 
-    padding:30px;
+    background: rgba(248, 236, 210, 0.94);
 
-    background:
-    rgba(248,236,210,0.92);
-
-    border:2px solid #8a6b3f;
-
-    border-radius:18px;
+    border: 2px solid #8a6b3f;
+    border-radius: 18px;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,.25);
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 0 18px rgba(138, 107, 63, 0.12);
 
-    text-align:center;
+    text-align: center;
+
+    animation: parchmentAppear 1s ease both;
 }
 
 /* ===================================
    TEXT
 =================================== */
 
-.intro{
-
-    color:#4d2f12;
-
-    font-size:18px;
-
-    line-height:1.6;
-
-    margin-bottom:25px;
+.intro {
+    color: #4d2f12;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-#spellStatus{
-
-    margin-top:15px;
-
-    color:#6a4722;
-
-    min-height:22px;
-
-    font-size:14px;
+#spellStatus {
+    margin-top: 15px;
+    color: #6a4722;
+    min-height: 22px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-#error{
-
-    margin-top:12px;
-
-    color:#b22222;
-
-    min-height:20px;
-
-    font-size:14px;
+#error {
+    margin-top: 12px;
+    color: #b22222;
+    min-height: 20px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 /* ===================================
-   MIC BUTTON
+   BUTTONS
 =================================== */
 
-#micBtn{
+#micBtn,
+#unlockBtn {
+    width: 100%;
+    padding: 15px;
 
-    width:100%;
+    border: 1px solid #6e4c27;
+    border-radius: 12px;
 
-    padding:15px;
+    background: linear-gradient(
+        135deg,
+        #9b7948,
+        #76552f
+    );
 
-    border:none;
+    color: #fff8e9;
+    font-family: Georgia, serif;
+    font-size: 16px;
 
-    border-radius:12px;
+    cursor: pointer;
 
-    background:#8a6b3f;
+    box-shadow: 0 4px 10px rgba(65, 42, 19, 0.18);
 
-    color:white;
-
-    font-size:17px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
-#micBtn:active{
+#micBtn:hover,
+#unlockBtn:hover {
+    background: linear-gradient(
+        135deg,
+        #ad8952,
+        #896337
+    );
 
-    transform:scale(.98);
+    box-shadow: 0 6px 15px rgba(65, 42, 19, 0.25);
+}
+
+#micBtn:active,
+#unlockBtn:active {
+    transform: scale(0.98);
+}
+
+#micBtn:focus-visible,
+#unlockBtn:focus-visible {
+    outline: 2px solid #4d2f12;
+    outline-offset: 3px;
 }
 
 /* ===================================
    DIVIDER
 =================================== */
 
-.divider{
-
-    margin:25px 0;
-
-    color:#7a5a33;
-
-    font-size:15px;
+.divider {
+    margin: 25px 0;
+    color: #7a5a33;
+    font-size: 15px;
+    letter-spacing: 2px;
 }
 
 /* ===================================
-   PASSWORD
+   PASSWORD FIELD
 =================================== */
 
-#password{
+#password {
+    display: block;
+    width: 100%;
 
-    width:100%;
+    padding: 14px;
 
-    padding:14px;
+    border-radius: 10px;
+    border: 1px solid #8a6b3f;
 
-    border-radius:10px;
+    background: rgba(255, 250, 239, 0.9);
+    color: #4d2f12;
 
-    border:1px solid #8a6b3f;
+    outline: none;
+    font-family: Georgia, serif;
+    font-size: 16px;
 
-    outline:none;
+    margin-bottom: 15px;
 
-    font-size:16px;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
 
-    margin-bottom:15px;
+#password::placeholder {
+    color: #9a8060;
+}
+
+#password:focus {
+    border-color: #68451f;
+    box-shadow: 0 0 0 3px rgba(138, 107, 63, 0.18);
 }
 
 /* ===================================
-   REVEAL BUTTON
+   MAGICAL LOADING SCREEN
 =================================== */
 
-#unlockBtn{
+.loading-screen {
+    position: fixed;
+    inset: 0;
 
-    width:100%;
+    z-index: 9999;
 
-    padding:14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border:none;
+    padding: 25px;
 
-    border-radius:12px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(73, 48, 27, 0.96) 0%,
+            rgba(35, 22, 13, 0.99) 55%,
+            #120b07 100%
+        );
 
-    background:#8a6b3f;
+    color: #f3d7a0;
 
-    color:white;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
 }
 
-#unlockBtn:active{
+/* Show loading screen */
+.loading-screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
 
-    transform:scale(.98);
+/* Loading content */
+.loading-content {
+    width: 100%;
+    max-width: 360px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.loading-screen.active .loading-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Magical star */
+.magic-symbol {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    color: #f4d18b;
+    font-size: 48px;
+    line-height: 1;
+
+    text-shadow:
+        0 0 10px rgba(244, 209, 139, 0.6),
+        0 0 25px rgba(244, 209, 139, 0.35);
+
+    animation: magicGlow 2.2s ease-in-out infinite;
+}
+
+/* Loading title */
+.loading-content h1 {
+    color: #f3d7a0;
+
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: normal;
+    font-style: italic;
+
+    letter-spacing: 1px;
+    line-height: 1.4;
+
+    text-shadow: 0 2px 12px rgba(244, 209, 139, 0.15);
+}
+
+/* Loading message */
+.loading-content p {
+    margin-top: 18px;
+
+    color: #d7b982;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+
+    letter-spacing: 0.4px;
+    line-height: 1.6;
+}
+
+/* Animated progress line */
+.loading-line {
+    position: relative;
+
+    width: 180px;
+    height: 2px;
+
+    margin: 30px auto 0;
+
+    overflow: hidden;
+
+    background: rgba(215, 185, 130, 0.2);
+    border-radius: 5px;
+}
+
+.loading-line span {
+    display: block;
+
+    width: 40%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #f4d18b,
+        #fff0c2,
+        transparent
+    );
+
+    box-shadow: 0 0 10px rgba(244, 209, 139, 0.65);
+
+    animation: loadingProgress 1.6s ease-in-out infinite;
+}
+
+/* ===================================
+   ANIMATIONS
+=================================== */
+
+@keyframes parchmentAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes magicGlow {
+    0%,
+    100% {
+        opacity: 0.65;
+        transform: scale(0.95) rotate(0deg);
+
+        text-shadow:
+            0 0 8px rgba(216, 169, 91, 0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12) rotate(45deg);
+
+        text-shadow:
+            0 0 14px #f4d18b,
+            0 0 28px rgba(244, 209, 139, 0.65);
+    }
+}
+
+@keyframes loadingProgress {
+    from {
+        transform: translateX(-110%);
+    }
+
+    to {
+        transform: translateX(360%);
+    }
 }
 
 /* ===================================
    MOBILE
 =================================== */
 
-@media(max-width:480px){
-
-    .parchment{
-
-        padding:24px;
+@media (max-width: 480px) {
+    .overlay {
+        padding: 20px;
     }
 
-    .intro{
+    .parchment {
+        padding: 24px;
+        max-width: 360px;
+    }
 
-        font-size:16px;
+    .intro {
+        font-size: 16px;
+    }
+
+    #micBtn,
+    #unlockBtn {
+        font-size: 15px;
+        padding: 14px;
+    }
+
+    .loading-content h1 {
+        font-size: 27px;
+    }
+
+    .magic-symbol {
+        font-size: 44px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
     }
 }
