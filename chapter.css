@@ -204,3 +204,56 @@ h1 {
   }
 }
 
+
+
+/* Actual scrapbook photographs */
+.memory-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border: 1px solid #d4b88b;
+}
+
+/* Different photo angles */
+.photo-tilt-left {
+  transform: rotate(-2deg);
+}
+
+.photo-tilt-right {
+  transform: rotate(2deg);
+}
+
+.photo-wide {
+  max-width: 100%;
+  transform: rotate(0deg);
+}
+
+/* Vintage paper photo frame */
+.memory-photo {
+  position: relative;
+  margin-top: 34px;
+  margin-bottom: 38px;
+}
+
+/* Small piece of translucent tape */
+.memory-photo::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 38%;
+  width: 75px;
+  height: 19px;
+  background: #d9bd82aa;
+  transform: rotate(-4deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Handwritten-style captions */
+.memory-photo figcaption {
+  padding: 4px 3px 0;
+  line-height: 1.5;
+}
+
