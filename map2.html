@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mischief Managed — Map II</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #21150e;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            transition: opacity 0.4s ease;
+        }
+
+        /* POSTER */
+        .map-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .map-poster {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            min-height: 100dvh;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* FLOATING COMING-SOON BAR */
+        .coming-soon {
+            position: fixed;
+            z-index: 10;
+            left: 50%;
+            bottom: 35px;
+            transform: translateX(-50%);
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            width: max-content;
+            max-width: 90%;
+            padding: 12px 17px;
+
+            color: #fff0d0;
+            background: rgba(43, 25, 14, 0.68);
+            border: 1px solid rgba(230, 193, 130, 0.65);
+            border-radius: 12px;
+
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .broom {
+            font-size: 27px;
+            line-height: 1;
+        }
+
+        .coming-soon strong {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+
+        .coming-soon p {
+            margin-top: 4px;
+            font-size: 12px;
+            font-style: italic;
+            opacity: 0.85;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, -5px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon {
+                bottom: 28px;
+                padding: 10px 13px;
+                gap: 9px;
+                max-width: 92%;
+            }
+
+            .coming-soon strong {
+                font-size: 12px;
+            }
+
+            .coming-soon p {
+                font-size: 11px;
+            }
+
+            .broom {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="map-container">
+
+        <!-- Change this filename if your poster has a different name -->
+        <img
+            src="assets/Map2.png"
+            class="map-poster"
+            alt="The next chapter of our memory map"
+        >
+
+    </main>
+
+    <div class="coming-soon">
+        <span class="broom">🧹</span>
+
+        <div>
+            <strong>Memories collection in progress</strong>
+            <p>Will be added soon ✨</p>
+        </div>
+    </div>
+
+</body>
+</html>
