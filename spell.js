@@ -1,179 +1,195 @@
+
 /* ===================================
    ELEMENTS
 =================================== */
 
-const unlockBtn =
-document.getElementById("unlockBtn");
+const unlockBtn = document.getElementById("unlockBtn");
+const passwordInput = document.getElementById("password");
+const errorText = document.getElementById("error");
+const micBtn = document.getElementById("micBtn");
+const spellStatus = document.getElementById("spellStatus");
 
-const passwordInput =
-document.getElementById("password");
-
-const errorText =
-document.getElementById("error");
-
-const micBtn =
-document.getElementById("micBtn");
-
-const spellStatus =
-document.getElementById("spellStatus");
+const loadingScreen = document.getElementById("loadingScreen");
 
 /* ===================================
-   REVEAL SITE
+   REVEAL SITE WITH MAGIC TRANSITION
 =================================== */
 
-function revealSite(){
+let isRevealing = false;
 
-    document.body.classList.add(
-        "fade"
-    );
+function revealSite() {
 
-    setTimeout(()=>{
+    // Prevent multiple clicks or repeated triggers
+    if (isRevealing) return;
 
-        window.location.href =
-        "main.html";
+    isRevealing = true;
 
-    },1500);
+    // Hide errors and disable buttons
+    errorText.innerText = "";
+    unlockBtn.disabled = true;
+    micBtn.disabled = true;
+    passwordInput.disabled = true;
+
+    // Fade away the parchment page
+    document.body.classList.add("leaving");
+
+    // Show the magical loading screen
+    if (loadingScreen) {
+        loadingScreen.classList.add("active");
+    }
+
+    // Navigate after the animation
+    setTimeout(() => {
+
+        window.location.href = "map1.html";
+
+    }, 2500);
 }
 
 /* ===================================
    PASSWORD UNLOCK
 =================================== */
 
-unlockBtn.addEventListener(
-    "click",
-    ()=>{
+unlockBtn.addEventListener("click", () => {
 
-        const password =
-        passwordInput.value
+    if (isRevealing) return;
+
+    const password = passwordInput.value
         .trim()
         .toLowerCase();
 
-        if(
-            password ===
-            "mischief managed"
-        ){
+    if (password === "mischief managed") {
 
-            revealSite();
+        revealSite();
 
-        }else{
+    } else {
 
-            errorText.innerText =
-            "Wrong spell. Try again.";
-
-        }
+        errorText.innerText = "Wrong spell. Try again.";
     }
-);
+});
+
+// Allow Enter key to submit the password
+passwordInput.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter") {
+        unlockBtn.click();
+    }
+});
 
 /* ===================================
    MICROPHONE UNLOCK
 =================================== */
 
 const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
 
-if(!SpeechRecognition){
+if (!SpeechRecognition) {
 
     spellStatus.innerText =
-    "Speech Recognition not supported";
+        "Speech recognition is not supported in this browser. Please enter the password.";
 
-}else{
+    micBtn.disabled = true;
 
-    const recognition =
-    new SpeechRecognition();
+} else {
 
-    recognition.lang =
-    "en-US";
+    const recognition = new SpeechRecognition();
 
-    recognition.interimResults =
-    false;
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
 
-    recognition.continuous =
-    false;
+    /* Start listening */
+    micBtn.addEventListener("click", () => {
 
-    micBtn.addEventListener(
+        if (isRevealing) return;
 
-        "click",
+        errorText.innerText = "";
+        spellStatus.innerText = "Listening...";
 
-        ()=>{
+        try {
 
-            errorText.innerText = "";
+            recognition.start();
+
+        } catch (err) {
 
             spellStatus.innerText =
-            "Listening...";
+                "Please wait a moment and try again.";
 
-            try{
-
-                recognition.start();
-
-            }catch(err){
-
-                console.log(err);
-
-            }
+            console.log("Recognition start:", err);
         }
-    );
+    });
 
-    recognition.onstart = ()=>{
+    /* Microphone started */
+    recognition.onstart = () => {
 
-        spellStatus.innerText =
-        "Speak now...";
+        spellStatus.innerText = "Speak now...";
+
     };
 
-    recognition.onresult = (event)=>{
+    /* Check spoken words */
+    recognition.onresult = (event) => {
 
-        const spokenText =
-        event.results[0][0]
-        .transcript
-        .toLowerCase();
+        const spokenText = event.results[0][0]
+            .transcript
+            .trim()
+            .toLowerCase();
 
-        console.log(
-            "Detected:",
-            spokenText
-        );
+        console.log("Detected:", spokenText);
 
-        spellStatus.innerText =
-        "Heard: " + spokenText;
+        spellStatus.innerText = "Heard: " + spokenText;
 
-        if(
-            spokenText.includes(
-                "mischief managed"
-            )
-        ){
+        if (spokenText.includes("mischief managed")) {
 
-            spellStatus.innerText =
-            "Spell Accepted ✨";
+            spellStatus.innerText = "Spell Accepted ✨";
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 revealSite();
 
-            },700);
+            }, 700);
 
-        }else{
+        } else {
 
             spellStatus.innerText =
-            "Wrong Spell. Try Again.";
+                "Wrong spell. Try again.";
+
         }
     };
 
-    recognition.onerror =
-    (event)=>{
+    /* Handle microphone errors */
+    recognition.onerror = (event) => {
 
-        spellStatus.innerText =
-        "Error: " +
-        event.error;
+        if (isRevealing) return;
 
-        console.error(
-            event.error
-        );
+        console.error("Speech recognition error:", event.error);
+
+        if (event.error === "not-allowed") {
+
+            spellStatus.innerText =
+                "Microphone access denied. Please allow microphone access or enter the password.";
+
+        } else if (event.error === "no-speech") {
+
+            spellStatus.innerText =
+                "I couldn't hear you. Please try again.";
+
+        } else if (event.error === "network") {
+
+            spellStatus.innerText =
+                "Network error. Please try the password instead.";
+
+        } else {
+
+            spellStatus.innerText =
+                "Couldn't hear the spell. Please try again.";
+        }
     };
 
-    recognition.onend =
-    ()=>{
+    /* Recognition ended */
+    recognition.onend = () => {
 
-        console.log(
-            "Recognition ended"
-        );
+        console.log("Speech recognition ended");
+
     };
 }
